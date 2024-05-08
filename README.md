@@ -1,10 +1,21 @@
-# PerfMan: Performance Management Platform
+<div align="center">
+    <img src="resources/img/logo_with_name.png" height="100px"/>
+    <h1>PerfMan: Performance Testing Management Platform</h1>
+</div>
 
-PerfMan is an open-source, comprehensive performance management platform designed for modern cloud applications. It
+<div align="center">
+    <img src="https://img.shields.io/badge/Language-Java-orange.svg" />
+    <img src="https://img.shields.io/badge/ORM-MyBatis-blue.svg" />
+    <img src="https://img.shields.io/badge/Architecture-Spring Cloud-6db33f.svg" />
+</div>
+
+<h4 align="center">
+    <a href="README.zh.md">中文</a> | English
+</h4>
+
+PerfMan is an open-source, comprehensive performance testing management platform designed for modern cloud applications. It
 provides a suite of tools for managing environments, projects, testing scenarios, tasks, and notifications, all built on
 a microservices architecture leveraging Spring Cloud.
-
-**Chinese Version**: [中文](README.zh.md)
 
 ## Features
 

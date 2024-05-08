@@ -1,8 +1,19 @@
-# PerfMan: 性能管理平台
+<div align="center">
+    <img src="resources/img/logo_with_name.png" height="100px"/>
+    <h1>PerfMan: 性能测试管理平台</h1>
+</div>
+
+<div align="center">
+    <img src="https://img.shields.io/badge/Language-Java-orange.svg" />
+    <img src="https://img.shields.io/badge/ORM-MyBatis-blue.svg" />
+    <img src="https://img.shields.io/badge/Architecture-Spring Cloud-6db33f.svg" />
+</div>
+
+<h4 align="center">
+    中文 | <a href="README.md">English</a>
+</h4>
 
 PerfMan 是一个基于Spring Cloud微服务架构的开源综合性能管理平台，旨在为现代云应用提供一站式的环境管理、项目管理、测试场景和任务管理、通知管理等解决方案。
-
-**英语版本**: [English](README.md)
 
 ## 功能特点
 
