@@ -49,6 +49,99 @@ cd perfman
 mvn clean install
 ```
 
+##  配置中心更新指南
+
+### 简介
+
+此指南介绍如何通过更新Git仓库中的配置文件来更新PerfMan项目的配置中心配置。配置中心使用Spring Cloud Config Server，从Git仓库中拉取配置文件，并将其提供给各个微服务。
+
+### 步骤
+
+#### 1. 克隆配置仓库
+
+首先，克隆配置仓库到本地：
+
+```bash
+git clone https://github.com/waiyuchan/perfman-config-repo.git
+cd perfman-config-repo
+```
+
+### 2. 更新配置文件
+
+在克隆下来的仓库中，找到需要更新的配置文件，例如 `application.yml` 或具体服务的配置文件（如 `perfman-project-service.yml`）。
+
+#### 操作示例：
+
+更新 `application.yml` 文件：
+
+```yaml
+# application.yml
+spring:
+  application:
+    name: perfman-config-service
+    # 新增或修改配置项
+    new-property: newValue
+```
+
+更新 `perfman-project-service.yml` 文件：
+
+```yaml
+# perfman-project-service.yml
+project:
+  setting1: newValue1
+  setting2: newValue2
+```
+
+### 3. 提交并推送更改
+
+将更改提交到Git仓库：
+
+```bash
+git add .
+git commit -m "Update configuration for perfman-project-service"
+git push origin master
+```
+
+### 4. 刷新配置
+
+为了使更改生效，需要通知配置中心刷新配置。可以通过以下两种方式实现：
+
+#### 方式一：使用Spring Boot Actuator端点刷新
+
+如果客户端应用启用了Spring Boot Actuator，可以访问 `/actuator/refresh` 端点刷新配置。
+
+```bash
+curl -X POST http://localhost:8080/actuator/refresh
+```
+
+#### 方式二：手动重启客户端应用
+
+手动重启需要更新配置的客户端应用，使其重新从配置中心拉取最新的配置。
+
+### 常见问题
+
+#### 问题1：配置未生效
+
+确保已经推送更改到Git仓库，并且客户端应用已经刷新配置或重启。
+
+#### 问题2：配置拉取失败
+
+检查配置中心的 `application.yml` 文件中的Git仓库配置是否正确：
+
+```yaml
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/waiyuchan/perfman-config-repo
+          search-paths: config-repo
+          clone-on-start: true
+```
+
+确保Git仓库的URL正确，且仓库中包含需要的配置文件。
+
+
 ### 运行服务
 
 启动Eureka Server：

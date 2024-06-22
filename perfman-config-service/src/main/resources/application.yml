@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: perfman-config-service
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/waiyuchan/perfman-config-repo
+          search-paths: config-repo
+          clone-on-start: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
