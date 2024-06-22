@@ -303,7 +303,7 @@ mvn spring-boot:run
 
 ## 许可证
 
-PerfMan是根据[MIT许可证](LICENSE)开源的软件。
+PerfMan是根据[Apache-2.0 许可证](LICENSE)开源的软件。
 
 ## 致谢
 

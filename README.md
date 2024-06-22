@@ -312,7 +312,7 @@ process for submitting bugs, and how to suggest improvements.
 
 ## License
 
-PerfMan is open-source software licensed under the [MIT license](LICENSE).
+PerfMan is open-source software licensed under the [Apache-2.0 license](LICENSE).
 
 ## Acknowledgments
 
