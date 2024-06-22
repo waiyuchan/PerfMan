@@ -143,6 +143,152 @@ spring:
 
 Make sure the URL of the Git repository is correct and the repository contains the required configuration files.
 
+## New service registration and discovery based on Eureka
+
+### Steps
+
+#### 1. Add Eureka Client dependency
+
+Add Spring Cloud Netflix Eureka Client dependency in the service's `pom.xml` file:
+
+```xml
+<dependencies>
+    <!-- Other dependencies -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
+```
+
+#### 2. Configure `application.yml`
+
+Add Eureka client configuration in the service's `src/main/resources/application.yml` file:
+
+```yaml
+spring:
+  application:
+    name: <service-name>  # 替换为具体服务名称
+
+  cloud:
+    config:
+      uri: http://localhost:8888  # Config Server的地址
+      name: <service-name>  # 替换为具体服务名称
+      profile: default
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+```
+
+#### 3. Enable Eureka client
+
+Enable Eureka client in the main class file of the service. Assume the main class file is `PerfmanServiceApplication.java`:
+
+```java
+package com.perfman.service;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+@SpringBootApplication
+@EnableEurekaClient
+public class PerfmanServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PerfmanServiceApplication.class, args);
+    }
+}
+
+```
+
+#### 4. Start the service
+
+To start the service, follow these steps:
+
+1. Make sure `perfman-discovery-service` is up and running at `http://localhost:8761`.
+
+2. Start the new service, which will automatically register with Eureka when it starts.
+
+#### 5. Verify service registration
+
+Visit `http://localhost:8761` in the browser to see all services registered with Eureka, including the new service.
+
+#### 6. Configure other services to call the new service
+
+Other services can call the newly registered service by service name to ensure that all services can discover each other. Here is an example:
+
+```yaml
+# application.yml configuration for other services
+spring:
+  application:
+    name: other-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+```
+
+Use `RestTemplate` to call the new service in the code:
+
+```java
+package com.perfman.otherservice;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class OtherService {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String callNewService() {
+        return restTemplate.getForObject("http://<service-name>/endpoint", String.class);
+    }
+}
+
+@Configuration
+class Config {
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+}
+
+```
+
+#### FAQ
+
+##### Problem 1: Service is not registered with Eureka
+
+- Make sure the Eureka client is correctly configured in the service's `application.yml` file.
+
+- Make sure the Eureka server (perfman-discovery-service) is up and running at the specified address.
+
+##### Problem 2: Service cannot discover other services
+
+- Make sure all services are correctly registered with Eureka and that the Eureka server is running properly.
+- Check that the service name is correct and that the service name is consistent with the name registered in Eureka.
+
 ### Running the Services
 
 Start the Eureka Server:

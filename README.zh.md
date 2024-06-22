@@ -141,6 +141,146 @@ spring:
 
 确保Git仓库的URL正确，且仓库中包含需要的配置文件。
 
+## 基于Eureka的新服务注册和发现
+
+### 步骤
+
+#### 1. 添加Eureka Client依赖
+
+在服务的 `pom.xml` 文件中添加 Spring Cloud Netflix Eureka Client 的依赖：
+
+```xml
+<dependencies>
+    <!-- Other dependencies -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
+```
+
+#### 2. 配置 `application.yml`
+
+在服务的 `src/main/resources/application.yml` 文件中添加 Eureka 客户端配置：
+
+```yaml
+spring:
+  application:
+    name: <service-name>  # 替换为具体服务名称
+
+  cloud:
+    config:
+      uri: http://localhost:8888  # Config Server的地址
+      name: <service-name>  # 替换为具体服务名称
+      profile: default
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+```
+
+#### 3. 启用Eureka客户端
+
+在服务的主类文件中启用Eureka客户端。假设主类文件为 `PerfmanServiceApplication.java`：
+
+```java
+package com.perfman.service;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+@SpringBootApplication
+@EnableEurekaClient
+public class PerfmanServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PerfmanServiceApplication.class, args);
+    }
+}
+```
+
+#### 4. 启动服务
+
+按照以下步骤启动服务：
+
+1. 确保 `perfman-discovery-service` 已经启动并运行在 `http://localhost:8761`。
+2. 启动新的服务，该服务将在启动时自动注册到Eureka。
+
+#### 5. 验证服务注册
+
+在浏览器中访问 `http://localhost:8761`，可以看到已经注册到Eureka的所有服务，包括新的服务。
+
+#### 6. 配置其他服务调用新服务
+
+其他服务可以通过服务名称调用新注册的服务，确保所有服务都可以互相发现。以下是一个示例：
+
+```yaml
+# 其他服务的 application.yml 配置
+spring:
+  application:
+    name: other-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+```
+
+在代码中使用 `RestTemplate` 调用新服务：
+
+```java
+package com.perfman.otherservice;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class OtherService {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String callNewService() {
+        return restTemplate.getForObject("http://<service-name>/endpoint", String.class);
+    }
+}
+
+@Configuration
+class Config {
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+}
+```
+
+#### 常见问题
+
+##### 问题1：服务未注册到Eureka
+
+- 确保服务的 `application.yml` 文件中已正确配置Eureka客户端。
+- 确保Eureka服务器（perfman-discovery-service）已启动并运行在指定地址。
+
+##### 问题2：服务无法发现其他服务
+
+- 确保所有服务都已正确注册到Eureka，并且Eureka服务器运行正常。
+- 检查服务名称是否正确，确保服务名称与Eureka中注册的名称一致。
+
 
 ### 运行服务
 
