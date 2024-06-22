@@ -39,7 +39,7 @@ PerfMan 是一个基于Spring Cloud微服务架构的开源综合性能管理平
 克隆PerfMan项目仓库：
 
 ```bash
-git clone https://github.com/yourusername/perfman.git
+git clone https://github.com/waiyuchan/PerfMan.git
 cd perfman
 ```
 
