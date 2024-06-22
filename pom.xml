@@ -19,7 +19,7 @@
         <!--        <module>perfman-alerting-service</module>-->
         <!--        <module>perfman-auth-service</module>-->
         <module>perfman-config-service</module>
-        <!--        <module>perfman-discovery-service</module>-->
+        <module>perfman-discovery-service</module>
         <!--        <module>perfman-environment-service</module>-->
         <!--        <module>perfman-gateway-service</module>-->
         <!--        <module>perfman-jmeter-service</module>-->
