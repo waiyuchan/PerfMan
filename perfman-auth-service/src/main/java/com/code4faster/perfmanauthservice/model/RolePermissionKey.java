@@ -1,23 +1,23 @@
 package com.code4faster.perfmanauthservice.model;
 
 public class RolePermissionKey {
-    private Integer roleId;
+    private String roleId;
 
-    private Integer permissionId;
+    private String permissionId;
 
-    public Integer getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
-    public Integer getPermissionId() {
+    public String getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(Integer permissionId) {
+    public void setPermissionId(String permissionId) {
         this.permissionId = permissionId;
     }
 }
