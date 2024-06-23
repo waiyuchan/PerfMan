@@ -21,11 +21,11 @@
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanauthservice.mapper" targetProject="src/main/java"/>
 
-        <table schema="perfman" tableName="user" domainObjectName="User"/>
-        <table schema="perfman" tableName="roles" domainObjectName="Role"/>
-        <table schema="perfman" tableName="permissions" domainObjectName="Permission"/>
-        <table schema="perfman" tableName="user_roles" domainObjectName="UserRole"/>
-        <table schema="perfman" tableName="role_permissions" domainObjectName="RolePermission"/>
-        <table schema="perfman" tableName="user_tokens" domainObjectName="UserToken"/>
+        <table schema="perfman" tableName="perfman_user" domainObjectName="User"/>
+        <table schema="perfman" tableName="perfman_roles" domainObjectName="Role"/>
+        <table schema="perfman" tableName="perfman_permissions" domainObjectName="Permission"/>
+        <table schema="perfman" tableName="perfman_user_roles" domainObjectName="UserRole"/>
+        <table schema="perfman" tableName="perfman_role_permissions" domainObjectName="RolePermission"/>
+        <table schema="perfman" tableName="perfman_user_tokens" domainObjectName="UserToken"/>
     </context>
 </generatorConfiguration>

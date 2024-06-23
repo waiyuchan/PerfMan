@@ -41,7 +41,29 @@ public class JwtUtil {
         return getClaimsFromToken(token).getExpiration().before(new Date());
     }
 
+    public boolean validateToken(String token) {
+        try {
+            getClaimsFromToken(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public long getExpiration() {
         return expiration;
+    }
+
+    public String extractUsername(String token) {
+        return getUsernameFromToken(token);
+    }
+
+    // Add these setter methods for testing purposes
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    public void setExpiration(long expiration) {
+        this.expiration = expiration;
     }
 }

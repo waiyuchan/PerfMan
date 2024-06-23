@@ -12,15 +12,15 @@ public class RedisUtil {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    public void set(String key, String value, long expiration) {
-        redisTemplate.opsForValue().set(key, value, expiration, TimeUnit.MILLISECONDS);
-    }
-
-    public String get(String key) {
-        return redisTemplate.opsForValue().get(key);
+    public void set(String key, String value, long timeout) {
+        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.MILLISECONDS);
     }
 
     public boolean delete(String key) {
-        return redisTemplate.delete(key);
+        return Boolean.TRUE.equals(redisTemplate.delete(key));
+    }
+
+    public boolean hasKey(String key) {
+        return Boolean.TRUE.equals(redisTemplate.hasKey(key));
     }
 }

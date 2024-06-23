@@ -1,17 +1,17 @@
 package com.code4faster.perfmanauthservice.model;
 
 public class Permission {
-    private Integer id;
+    private String id;
 
     private String name;
 
     private String description;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

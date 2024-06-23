@@ -3,37 +3,25 @@ package com.code4faster.perfmanauthservice.model;
 import java.util.Date;
 
 public class User {
-    private Integer id;
+    private String id;
 
     private String username;
 
-    private String nickname;
-
-    private String password;
-
-    private String phone;
-
     private String email;
 
-    private String wxId;
+    private String passwordHash;
 
-    private Byte gender;
-
-    private String avatar;
-
-    private Byte status;
-
-    private Date birthday;
+    private Integer status;
 
     private Date createdAt;
 
     private Date updatedAt;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,30 +33,6 @@ public class User {
         this.username = username;
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -77,44 +41,20 @@ public class User {
         this.email = email;
     }
 
-    public String getWxId() {
-        return wxId;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setWxId(String wxId) {
-        this.wxId = wxId;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    public Byte getGender() {
-        return gender;
-    }
-
-    public void setGender(Byte gender) {
-        this.gender = gender;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public Date getCreatedAt() {
