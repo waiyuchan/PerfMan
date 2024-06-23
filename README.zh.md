@@ -49,11 +49,12 @@ cd perfman
 mvn clean install
 ```
 
-##  配置中心更新指南
+## 配置中心更新指南
 
 ### 简介
 
-此指南介绍如何通过更新Git仓库中的配置文件来更新PerfMan项目的配置中心配置。配置中心使用Spring Cloud Config Server，从Git仓库中拉取配置文件，并将其提供给各个微服务。
+此指南介绍如何通过更新Git仓库中的配置文件来更新PerfMan项目的配置中心配置。配置中心使用Spring Cloud Config
+Server，从Git仓库中拉取配置文件，并将其提供给各个微服务。
 
 ### 步骤
 
@@ -150,6 +151,7 @@ spring:
 在服务的 `pom.xml` 文件中添加 Spring Cloud Netflix Eureka Client 的依赖：
 
 ```xml
+
 <dependencies>
     <!-- Other dependencies -->
     <dependency>
@@ -281,7 +283,6 @@ class Config {
 - 确保所有服务都已正确注册到Eureka，并且Eureka服务器运行正常。
 - 检查服务名称是否正确，确保服务名称与Eureka中注册的名称一致。
 
-
 ### 运行服务
 
 启动Eureka Server：
@@ -292,6 +293,251 @@ mvn spring-boot:run
 ```
 
 重复上述步骤以启动其它服务，将`perfman-discovery-service`替换为您想要启动的服务目录名。
+
+## 如何自动生成数据库 Model 和 Mapper
+
+本项目使用 MyBatis Generator（MBG） 自动生成数据库表对应的 Model 和 Mapper 文件。以下是针对各个微服务的具体步骤：
+
+### 前提条件
+
+1. 确保已安装 Maven。
+2. 确保 MySQL 数据库已启动，并且相关表结构已创建。
+3. 确保配置中心 (`perfman-config-service`) 正常运行，并已配置数据库连接信息。
+
+### 通用步骤
+
+1. **在 `pom.xml` 中添加 MyBatis Generator 依赖**
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>2.1.4</version>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-core</artifactId>
+        <version>1.4.0</version>
+    </dependency>
+</dependencies>
+
+<build>
+<plugins>
+    <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+            <verbose>true</verbose>
+            <overwrite>true</overwrite>
+        </configuration>
+        <executions>
+            <execution>
+                <id>Generate MyBatis Artifacts</id>
+                <goals>
+                    <goal>generate</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
+</build>
+```
+
+2. **在 `src/main/resources` 目录下创建 `generatorConfig.xml` 文件**
+
+以 `perfman-auth-service` 为例：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/perfman"
+                        userId="root"
+                        password="Test123456"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.code4faster.perfmanauthservice.model" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanauthservice.mapper"
+                             targetProject="src/main/java"/>
+
+        <table tableName="users" domainObjectName="User"/>
+        <table tableName="roles" domainObjectName="Role"/>
+        <table tableName="permissions" domainObjectName="Permission"/>
+        <table tableName="user_roles" domainObjectName="UserRole"/>
+        <table tableName="role_permissions" domainObjectName="RolePermission"/>
+        <table tableName="user_tokens" domainObjectName="UserToken"/>
+    </context>
+</generatorConfiguration>
+```
+
+根据不同的微服务，修改 `targetPackage` 和表名。
+
+3. **在命令行中运行 MyBatis Generator**
+
+```bash
+mvn mybatis-generator:generate
+```
+
+### 各个微服务的配置示例
+
+#### perfman-auth-service
+
+目录结构：
+
+```
+perfman-auth-service
+│
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─code4faster
+    │  │          └─perfmanauthservice
+    │  │              │  PerfmanAuthServiceApplication.java
+    │  │              │
+    │  │              ├─model
+    │  │              │      User.java
+    │  │              │      Role.java
+    │  │              │      Permission.java
+    │  │              │      UserRole.java
+    │  │              │      RolePermission.java
+    │  │              │      UserToken.java
+    │  │              │
+    │  │              ├─mapper
+    │  │              │      UserMapper.java
+    │  │              │      RoleMapper.java
+    │  │              │      PermissionMapper.java
+    │  │              │      UserRoleMapper.java
+    │  │              │      RolePermissionMapper.java
+    │  │              │      UserTokenMapper.java
+    │  │              │
+    │  │              ├─service
+    │  │              │      UserService.java
+    │  │              │      RoleService.java
+    │  │              │      PermissionService.java
+    │  │              │      UserRoleService.java
+    │  │              │      RolePermissionService.java
+    │  │              │      UserTokenService.java
+    │  │              │
+    │  │              └─controller
+    │  │                     AuthController.java
+    │  │                     # Other controllers
+    │  └─resources
+    │      │  application.yml
+    │      │  generatorConfig.xml
+    │      └─mapper
+    │              UserMapper.xml
+    │              RoleMapper.xml
+    │              PermissionMapper.xml
+    │              UserRoleMapper.xml
+    │              RolePermissionMapper.xml
+    │              UserTokenMapper.xml
+```
+
+#### perfman-project-service
+
+1. **配置 `generatorConfig.xml`**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/perfman"
+                        userId="root"
+                        password="Test123456"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.code4faster.perfmanprojectservice.model" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanprojectservice.mapper"
+                             targetProject="src/main/java"/>
+
+        <table tableName="projects" domainObjectName="Project"/>
+        <table tableName="project_members" domainObjectName="ProjectMember"/>
+        <table tableName="project_invitations" domainObjectName="ProjectInvitation"/>
+    </context>
+</generatorConfiguration>
+```
+
+2. **生成 Model 和 Mapper**
+
+    ```bash
+    mvn mybatis-generator:generate
+    ```
+
+目录结构：
+
+```
+perfman-project-service
+│
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─code4faster
+    │  │          └─perfmanprojectservice
+    │  │              │  PerfmanProjectServiceApplication.java
+    │  │              │
+    │  │              ├─model
+    │  │              │      Project.java
+    │  │              │      ProjectMember.java
+    │  │              │      ProjectInvitation.java
+    │  │              │
+    │  │              ├─mapper
+    │  │              │      ProjectMapper.java
+    │  │              │      ProjectMemberMapper.java
+    │  │              │      ProjectInvitationMapper.java
+    │  │              │
+    │  │              ├─service
+    │  │              │      ProjectService.java
+    │  │              │      ProjectMemberService.java
+    │  │              │      ProjectInvitationService.java
+    │  │              │
+    │  │              └─controller
+    │  │                     ProjectController.java
+    │  │                     # Other controllers
+    │  └─resources
+    │      │  application.yml
+    │      │  generatorConfig.xml
+    │      └─mapper
+    │              ProjectMapper.xml
+    │              ProjectMemberMapper.xml
+    │              ProjectInvitationMapper.xml
+```
+
+### 其他微服务
+
+按照上述示例，为其他微服务创建 `generatorConfig.xml`，并调整
+
+`targetPackage` 和表名，然后运行 MyBatis Generator 生成对应的 Model 和 Mapper 文件。
 
 ## 文档
 

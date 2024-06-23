@@ -9,8 +9,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/waiyuchan/perfman-config-repo
+          # 有可能会遇到网络问题，导致配置服务启动失败
+          uri: git@github.com:waiyuchan/perfman-config-repo.git
           search-paths: config-repo
+          timeout: 30000
           clone-on-start: true
 
 eureka:
