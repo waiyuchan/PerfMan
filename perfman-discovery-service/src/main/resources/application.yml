@@ -11,6 +11,9 @@ eureka:
     fetch-registry: false
   server:
     enable-self-preservation: false
+  dashboard:
+    login: admin
+    password: admin
 
 management:
   endpoints:

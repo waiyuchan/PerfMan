@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.code4faster.perfmancommonservice.proto";
+option java_outer_classname = "IdServiceProto";
+
+service IdService {
+  rpc GenerateId (IdRequest) returns (IdResponse);
+}
+
+message IdRequest {}
+
+message IdResponse {
+  int64 id = 1;
+}

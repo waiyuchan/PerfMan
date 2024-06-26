@@ -1,6 +1,8 @@
 package com.code4faster.perfmanauthservice.controller;
 
 import com.code4faster.perfmanauthservice.common.ResponseResult;
+import com.code4faster.perfmanauthservice.dto.RegisterRequest;
+import com.code4faster.perfmanauthservice.dto.LoginRequest;
 import com.code4faster.perfmanauthservice.model.User;
 import com.code4faster.perfmanauthservice.service.EmailService;
 import com.code4faster.perfmanauthservice.service.UserService;
@@ -53,17 +55,17 @@ public class AuthControllerTest {
 
     @Test
     public void testRegisterUser() {
-        User user = new User();
-        user.setUsername("test");
-        user.setPasswordHash("password");
-        user.setEmail("test@example.com");
+        RegisterRequest registerRequest = new RegisterRequest();
+        registerRequest.setUsername("test");
+        registerRequest.setPassword("password");
+        registerRequest.setEmail("test@example.com");
 
         doNothing().when(userService).createUser(any(User.class));
         when(jwtUtil.generateToken(anyString())).thenReturn("token");
         doNothing().when(emailService).sendVerificationEmail(anyString(), anyString());
         doNothing().when(redisUtil).set(anyString(), anyString(), anyLong());
 
-        ResponseResult<?> response = authController.registerUser(user);
+        ResponseResult<?> response = authController.registerUser(registerRequest);
         assertEquals(0, response.getCode());
     }
 
@@ -77,11 +79,11 @@ public class AuthControllerTest {
         when(jwtUtil.generateToken(anyString())).thenReturn("token");
         doNothing().when(redisUtil).set(anyString(), anyString(), anyLong());
 
-        User loginUser = new User();
-        loginUser.setUsername("test");
-        loginUser.setPasswordHash("password");
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setUsername("test");
+        loginRequest.setPassword("password");
 
-        ResponseResult<?> response = authController.loginUser(loginUser);
+        ResponseResult<?> response = authController.loginUser(loginRequest);
         assertEquals(0, response.getCode());
     }
 
@@ -89,11 +91,11 @@ public class AuthControllerTest {
     public void testLoginUserFailure() {
         when(userService.getUserByUsername(anyString())).thenReturn(null);
 
-        User loginUser = new User();
-        loginUser.setUsername("test");
-        loginUser.setPasswordHash("password");
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setUsername("test");
+        loginRequest.setPassword("password");
 
-        ResponseResult<?> response = authController.loginUser(loginUser);
+        ResponseResult<?> response = authController.loginUser(loginRequest);
         assertEquals(401, response.getCode());
     }
 
@@ -188,7 +190,6 @@ public class AuthControllerTest {
         ResponseResult<?> response = authController.resetPassword(request);
         assertEquals(0, response.getCode());
     }
-
 
     @Test
     public void testChangePassword() {

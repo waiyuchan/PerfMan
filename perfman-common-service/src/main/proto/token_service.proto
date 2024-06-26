@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.code4faster.perfmancommonservice.proto";
+option java_outer_classname = "TokenServiceProto";
+
+service TokenService {
+  rpc ValidateToken (TokenRequest) returns (TokenResponse);
+}
+
+message TokenRequest {
+  string token = 1;
+}
+
+message TokenResponse {
+  bool valid = 1;
+  string username = 2;
+}

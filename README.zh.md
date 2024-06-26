@@ -539,6 +539,16 @@ perfman-project-service
 
 `targetPackage` 和表名，然后运行 MyBatis Generator 生成对应的 Model 和 Mapper 文件。
 
+## 服务启动顺序
+
+- [perfman-discovery-service](perfman-discovery-service)
+- [perfman-config-service](perfman-config-service)
+- [perfman-auth-service](perfman-auth-service)
+
+**特别注意：**
+
+如果没有配置真实的邮件服务器，可以通过启动一个maildog来mock邮件服务器，完成auth服务器启动
+
 ## 文档
 
 更详细的文档，请访问[Wiki页面](https://github.com/yourusername/perfman/wiki)。

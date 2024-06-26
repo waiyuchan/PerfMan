@@ -2,16 +2,19 @@ package com.code4faster.perfmanauthservice.controller;
 
 import com.code4faster.perfmanauthservice.annotation.TokenValidator;
 import com.code4faster.perfmanauthservice.common.ResponseResult;
+import com.code4faster.perfmanauthservice.dto.RegisterRequest;
+import com.code4faster.perfmanauthservice.dto.LoginRequest;
 import com.code4faster.perfmanauthservice.model.User;
 import com.code4faster.perfmanauthservice.service.EmailService;
 import com.code4faster.perfmanauthservice.service.UserService;
 import com.code4faster.perfmanauthservice.util.JwtUtil;
 import com.code4faster.perfmanauthservice.util.RedisUtil;
 import com.code4faster.perfmanauthservice.util.ResponseUtil;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +22,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private UserService userService;
@@ -35,8 +41,12 @@ public class AuthController {
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/register")
-    public ResponseResult<?> registerUser(@RequestBody User user) {
-        user.setPasswordHash(passwordEncoder.encode(user.getPasswordHash()));
+    public ResponseResult<?> registerUser(@RequestBody RegisterRequest registerRequest) {
+        logger.info("请求参数:" + registerRequest.toString());
+        User user = new User();
+        user.setUsername(registerRequest.getUsername());
+        user.setPasswordHash(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setEmail(registerRequest.getEmail());
         userService.createUser(user);
         String token = jwtUtil.generateToken(user.getUsername());
         redisUtil.set(token, user.getUsername(), 24 * 60 * 60 * 1000); // 24 hours
@@ -45,9 +55,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseResult<?> loginUser(@RequestBody User user) {
-        User existingUser = userService.getUserByUsername(user.getUsername());
-        if (existingUser != null && passwordEncoder.matches(user.getPasswordHash(), existingUser.getPasswordHash())) {
+    public ResponseResult<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        User existingUser = userService.getUserByUsername(loginRequest.getUsername());
+        if (existingUser != null && passwordEncoder.matches(loginRequest.getPassword(), existingUser.getPasswordHash())) {
             String token = jwtUtil.generateToken(existingUser.getUsername());
             redisUtil.set(token, existingUser.getUsername(), jwtUtil.getExpiration());
             Map<String, String> response = new HashMap<>();
