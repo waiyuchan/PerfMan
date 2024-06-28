@@ -70,6 +70,12 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <!-- Eureka Client Dependency -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <!-- Spring Boot Starter Data Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -97,18 +103,16 @@
         </dependency>
 
         <!-- gRPC Dependencies -->
+        <!--        <dependency>-->
+        <!--            <groupId>net.devh</groupId>-->
+        <!--            <artifactId>grpc-spring-boot-starter</artifactId>-->
+        <!--            <version>${grpc.version}</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>net.devh</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
             <version>${grpc.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.devh</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>${grpc.version}</version>
-        </dependency>
-
-
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
@@ -118,7 +122,7 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>1.42.2</version>
+            <version>1.53.0</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>

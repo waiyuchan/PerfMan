@@ -4,10 +4,10 @@ import com.code4faster.perfmancommonservice.proto.IdServiceGrpc;
 import com.code4faster.perfmancommonservice.proto.IdServiceProto;
 import com.code4faster.perfmancommonservice.util.IdGenerator;
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
+@GrpcService
 public class IdServiceImpl extends IdServiceGrpc.IdServiceImplBase {
 
     private final IdGenerator idGenerator;
