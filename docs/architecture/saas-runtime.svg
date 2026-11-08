@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1530" height="1090" viewBox="0 0 1530 1090">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1530" height="1090" fill="#ffffff"/>
+<rect x="290" y="148" width="1210" height="520" rx="12" fill="#f3f8ff" fill-opacity="0.68" stroke="#1971c2" stroke-width="2"/>
+<rect x="35" y="400" width="220" height="120" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="330" y="220" width="290" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="330" y="425" width="290" height="105" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="755" y="425" width="300" height="105" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1160" y="425" width="300" height="105" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="755" y="220" width="300" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1160" y="220" width="300" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="330" y="765" width="290" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="755" y="765" width="300" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1160" y="765" width="300" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<polyline points="255,430 270,430 270,270 330,270" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="475,320 475,425" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="620,477 755,477" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1055,477 1160,477" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="905,425 905,320" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1055,270 1160,270" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="475,530 475,765" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="755,815 620,815" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1310,530 1310,765" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<text x="40" y="54" text-anchor="start" class="sans" font-size="30" fill="#1f2937">
+<tspan x="40" dy="0">PerfMan · Implemented Go workspace</tspan>
+</text>
+<text x="42" y="96" text-anchor="start" class="sans" font-size="16" fill="#64748b">
+<tspan x="42" dy="0">AS IMPLEMENTED · One Go service owns the complete management flow and bounded worker simulation</tspan>
+</text>
+<text x="308" y="184" text-anchor="start" class="sans" font-size="22" fill="#1971c2">
+<tspan x="308" dy="0">Single Go process</tspan>
+</text>
+<text x="308" y="206" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="308" dy="0">HTTP API + scheduler + execution + collection; shared transactional workspace ownership</tspan>
+</text>
+<text x="145" y="426" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="145" dy="0">Bilingual console</tspan>
+</text>
+<text x="145" y="447" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="145" dy="0">Author / Execute / Investigate</tspan>
+</text>
+<text x="475" y="246" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="475" dy="0">API + authorization</tspan>
+</text>
+<text x="475" y="267" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="475" dy="0">Session / Role / Project / Tag policy</tspan>
+</text>
+<text x="475" y="451" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="475" dy="0">Run + resource scheduler</tspan>
+</text>
+<text x="475" y="472" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="475" dy="0">Queue / Allocate / Barrier / Lease / Release</tspan>
+</text>
+<text x="905" y="451" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="905" dy="0">Managed worker contexts</tspan>
+</text>
+<text x="905" y="472" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="905" dy="0">Per-worker JS state / CSV partition</tspan>
+</text>
+<text x="1310" y="451" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1310" dy="0">Protocol + JMX engines</tspan>
+</text>
+<text x="1310" y="472" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1310" dy="0">Fixtures / SQLite SQL / Stateful Redis</tspan>
+</text>
+<text x="905" y="246" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="905" dy="0">Metrics + reports</tspan>
+</text>
+<text x="905" y="267" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="905" dy="0">Histograms / Series / Samples / Comparison</tspan>
+</text>
+<text x="1310" y="246" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1310" dy="0">Operations + SLA</tspan>
+</text>
+<text x="1310" y="267" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1310" dy="0">Schedules / Inbox / Virtual terminal / Audit</tspan>
+</text>
+<text x="475" y="791" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="475" dy="0">Workspace SQLite</tspan>
+</text>
+<text x="475" y="812" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="475" dy="0">Entities / Sessions / Frozen bundles</tspan>
+</text>
+<text x="905" y="791" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="905" dy="0">Environment encryption key</tspan>
+</text>
+<text x="905" y="812" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="905" dy="0">AES-GCM / workspace.key / Mode 0600</tspan>
+</text>
+<text x="1310" y="791" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1310" dy="0">Bundled HTTP target</tspan>
+</text>
+<text x="1310" y="812" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1310" dy="0">Native mode: measured loopback requests</tspan>
+</text>
+<text x="38" y="352" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="38" dy="0">JSON / session cookie</tspan>
+</text>
+<text x="490" y="377" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="490" dy="0">Admit frozen run</tspan>
+</text>
+<text x="624" y="452" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="624" dy="0">Assign shards / cancel</tspan>
+</text>
+<text x="1060" y="557" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="1060" dy="0">Execute bounded samples</tspan>
+</text>
+<text x="920" y="377" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="920" dy="0">Collect weighted samples</tspan>
+</text>
+<text x="1080" y="342" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="1080" dy="0">Evaluate SLA windows</tspan>
+</text>
+<text x="490" y="717" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="490" dy="0">Commit lifecycle + bundles</tspan>
+</text>
+<text x="625" y="902" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="625" dy="0">Encrypt environment secrets</tspan>
+</text>
+<text x="1320" y="712" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="1320" dy="0">Native HTTP loopback only</tspan>
+</text>
+<text x="760" y="603" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="760" dy="0">Simulated nodes and Pods: independent contexts, capacity and lifecycle.</tspan>
+<tspan x="760" dy="16.25">JMX compiles supported samplers; no JVM or uploaded plugin execution.</tspan>
+</text>
+<text x="40" y="803" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="40" dy="0">Data artifacts are durable.</tspan>
+<tspan x="40" dy="16.25">Browser state is not the</tspan>
+<tspan x="40" dy="16.25">authority for runs, policies,</tspan>
+<tspan x="40" dy="16.25">resources or terminal commands.</tspan>
+</text>
+<text x="45" y="990" text-anchor="start" class="sans" font-size="15" fill="#64748b">
+<tspan x="45" dy="0">Blue solid nodes = implemented components / owned artifacts. Green arrows = direct internal calls or persistence.</tspan>
+<tspan x="45" dy="18.75">Boundary: managed simulation runs inside this process; measured native HTTP reaches only the bundled target.</tspan>
+<tspan x="45" dy="18.75">Extensions: authenticated remote agents, Kubernetes / SSH providers, JVM JMeter and production HA.</tspan>
+</text>
+</svg>

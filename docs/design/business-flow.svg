@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1110" viewBox="0 0 1480 1110">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1480" height="1110" fill="#ffffff"/>
+<rect x="45" y="215" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="215" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="765" y="215" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1125" y="215" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1125" y="480" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="765" y="480" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="480" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="480" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="745" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="745" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="765" y="745" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1125" y="745" width="310" height="135" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<polyline points="355,282.5 405,282.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="715,282.5 765,282.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1075,282.5 1125,282.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1280,350 1280,480" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1125,547.5 1075,547.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="765,547.5 715,547.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="405,547.5 355,547.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="200,615 200,745" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="355,812.5 405,812.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="715,812.5 765,812.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1075,812.5 1125,812.5" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<text x="45" y="56" text-anchor="start" class="sans" font-size="32" fill="#1f2937">
+<tspan x="45" dy="0">PerfMan · End-to-end testing workflow</tspan>
+</text>
+<text x="47" y="103" text-anchor="start" class="sans" font-size="16" fill="#64748b">
+<tspan x="47" dy="0">BUSINESS FLOW · Follow steps 01 → 12 through preparation, orchestration and assessment</tspan>
+</text>
+<text x="47" y="181" text-anchor="start" class="sans" font-size="18" fill="#1f2937">
+<tspan x="47" dy="0">PREPARE  ·  User and project scope</tspan>
+</text>
+<text x="47" y="446" text-anchor="start" class="sans" font-size="18" fill="#1f2937">
+<tspan x="47" dy="0">ORCHESTRATE  ·  Controller and managed workers</tspan>
+</text>
+<text x="405" y="711" text-anchor="start" class="sans" font-size="18" fill="#1f2937">
+<tspan x="405" dy="0">ASSESS  ·  Monitoring, quality and results</tspan>
+</text>
+<text x="200" y="242" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="200" dy="0">01  Sign in &amp; choose project</tspan>
+</text>
+<text x="200" y="263" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="200" dy="0">Check session, role and membership</tspan>
+<tspan x="200" dy="13.919999999999998">Select the working environment</tspan>
+</text>
+<text x="560" y="242" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="560" dy="0">02  Build a scenario</tspan>
+</text>
+<text x="560" y="263" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="560" dy="0">Simple / JavaScript / JMeter</tspan>
+<tspan x="560" dy="13.919999999999998">Bind data, checks, load and regions</tspan>
+</text>
+<text x="920" y="242" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="920" dy="0">03  Validate &amp; debug</tspan>
+</text>
+<text x="920" y="263" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="920" dy="0">Validate files, imports and inputs</tspan>
+<tspan x="920" dy="13.919999999999998">Evaluate a bounded preview</tspan>
+</text>
+<text x="1280" y="242" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="1280" dy="0">04  Run or schedule</tspan>
+</text>
+<text x="1280" y="263" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="1280" dy="0">Start now or use a timezone plan</tspan>
+<tspan x="1280" dy="13.919999999999998">Check the pinned scenario version</tspan>
+</text>
+<text x="1280" y="507" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="1280" dy="0">05  Freeze &amp; queue</tspan>
+</text>
+<text x="1280" y="528" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="1280" dy="0">Freeze scenario, files and environment</tspan>
+<tspan x="1280" dy="13.919999999999998">Wait for group admission</tspan>
+</text>
+<text x="920" y="507" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="920" dy="0">06  Reserve regional capacity</tspan>
+</text>
+<text x="920" y="528" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="920" dy="0">Split the VU budget across workers</tspan>
+<tspan x="920" dy="13.919999999999998">Wait or simulate scale-out if needed</tspan>
+</text>
+<text x="560" y="507" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="560" dy="0">07  Prepare Pods &amp; release</tspan>
+</text>
+<text x="560" y="528" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="560" dy="0">Observe worker readiness</tspan>
+<tspan x="560" dy="13.919999999999998">Release the shared start barrier</tspan>
+</text>
+<text x="200" y="507" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="200" dy="0">08  Execute worker contexts</tspan>
+</text>
+<text x="200" y="528" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="200" dy="0">Separate script state and CSV shards</tspan>
+<tspan x="200" dy="13.919999999999998">Evaluate representative samples</tspan>
+</text>
+<text x="200" y="772" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="200" dy="0">09  Aggregate &amp; inspect</tspan>
+</text>
+<text x="200" y="793" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="200" dy="0">Combine integer counts and histograms</tspan>
+<tspan x="200" dy="13.919999999999998">Collect logs, samples and checks</tspan>
+</text>
+<text x="560" y="772" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="560" dy="0">10  Evaluate quality windows</tspan>
+</text>
+<text x="560" y="793" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="560" dy="0">Evaluate SLA on each sample window</tspan>
+<tspan x="560" dy="13.919999999999998">Track notify and stop independently</tspan>
+</text>
+<text x="920" y="772" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="920" dy="0">11  Finalize &amp; release</tspan>
+</text>
+<text x="920" y="793" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="920" dy="0">Complete / protect / cancel / interrupt</tspan>
+<tspan x="920" dy="13.919999999999998">A lost worker stays inconclusive</tspan>
+</text>
+<text x="1280" y="772" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="1280" dy="0">12  Review &amp; share results</tspan>
+</text>
+<text x="1280" y="793" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="1280" dy="0">Compare baseline and inspect snapshot</tspan>
+<tspan x="1280" dy="13.919999999999998">Export JSON / CSV / print-to-PDF</tspan>
+</text>
+<text x="1055" y="394" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="1055" dy="0">Admit frozen bundle</tspan>
+</text>
+<text x="222" y="659" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="222" dy="0">Collect bounded samples</tspan>
+</text>
+<text x="47" y="950" text-anchor="start" class="sans" font-size="15" fill="#1f2937">
+<tspan x="47" dy="0">Control rules: insufficient capacity stays queued; SLA is evaluated each window; stop / failure enters finalization.</tspan>
+<tspan x="47" dy="18.75">Data rule: integer request totals and merged histogram buckets feed reports; terminal states return reserved capacity.</tspan>
+</text>
+<text x="47" y="1034" text-anchor="start" class="sans" font-size="14" fill="#64748b">
+<tspan x="47" dy="0">Blue solid nodes = implemented steps. Green arrows = ordered internal transitions (not transport or network boundaries).</tspan>
+<tspan x="47" dy="17.5">Default execution uses managed simulation. Real Kubernetes / SSH / JVM integration remains an external-provider extension.</tspan>
+</text>
+</svg>

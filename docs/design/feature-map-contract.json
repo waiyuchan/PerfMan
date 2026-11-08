@@ -1,0 +1,79 @@
+{
+  "canvas": {
+    "width": 1490,
+    "height": 1090
+  },
+  "requiredLabels": [
+    "Workspace & access",
+    "Scenario authoring",
+    "Data & configuration",
+    "Resource fleet",
+    "Run orchestration",
+    "Monitoring & investigation",
+    "Quality & reporting",
+    "Scheduling & recording",
+    "Operations & governance"
+  ],
+  "styleRules": [
+    {
+      "label": "Workspace & access",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Scenario authoring",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Data & configuration",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Resource fleet",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Run orchestration",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Monitoring & investigation",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Quality & reporting",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Scheduling & recording",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Operations & governance",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    }
+  ],
+  "requiredRelations": [],
+  "overlapSets": [
+    [
+      "Workspace & access",
+      "Scenario authoring",
+      "Data & configuration",
+      "Resource fleet",
+      "Run orchestration",
+      "Monitoring & investigation",
+      "Quality & reporting",
+      "Scheduling & recording",
+      "Operations & governance"
+    ]
+  ],
+  "requireBoundArrows": false
+}

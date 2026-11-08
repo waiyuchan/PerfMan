@@ -1,0 +1,145 @@
+{
+  "canvas": {
+    "width": 1620,
+    "height": 1230
+  },
+  "requiredLabels": [
+    "Bilingual web console",
+    "Identity + policy",
+    "Projects + assets",
+    "Run + resource scheduler",
+    "Metrics + reports",
+    "Operations gateway",
+    "Go agent",
+    "Engine adapters",
+    "Resource providers",
+    "Target transports",
+    "Metadata store",
+    "Versioned artifact store"
+  ],
+  "styleRules": [
+    {
+      "label": "Bilingual web console",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Identity + policy",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Projects + assets",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Run + resource scheduler",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Metrics + reports",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Operations gateway",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Go agent",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Engine adapters",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Resource providers",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Target transports",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Metadata store",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Versioned artifact store",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    }
+  ],
+  "requiredRelations": [
+    {
+      "from": "Bilingual web console",
+      "to": "Identity + policy"
+    },
+    {
+      "from": "Identity + policy",
+      "to": "Run + resource scheduler"
+    },
+    {
+      "from": "Projects + assets",
+      "to": "Run + resource scheduler"
+    },
+    {
+      "from": "Run + resource scheduler",
+      "to": "Go agent"
+    },
+    {
+      "from": "Go agent",
+      "to": "Engine adapters"
+    },
+    {
+      "from": "Run + resource scheduler",
+      "to": "Resource providers"
+    },
+    {
+      "from": "Engine adapters",
+      "to": "Target transports"
+    },
+    {
+      "from": "Go agent",
+      "to": "Metrics + reports"
+    },
+    {
+      "from": "Metrics + reports",
+      "to": "Operations gateway"
+    },
+    {
+      "from": "Run + resource scheduler",
+      "to": "Metadata store"
+    },
+    {
+      "from": "Projects + assets",
+      "to": "Versioned artifact store"
+    }
+  ],
+  "overlapSets": [
+    [
+      "Bilingual web console",
+      "Identity + policy",
+      "Projects + assets",
+      "Run + resource scheduler",
+      "Metrics + reports",
+      "Operations gateway",
+      "Go agent",
+      "Engine adapters",
+      "Resource providers",
+      "Target transports",
+      "Metadata store",
+      "Versioned artifact store"
+    ]
+  ],
+  "requireBoundArrows": true
+}

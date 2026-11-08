@@ -1,0 +1,12 @@
+services:
+  perfman:
+    build: .
+    ports:
+      - "127.0.0.1:8099:8099"
+    environment:
+      PERFMAN_INITIAL_PASSWORD: ${PERFMAN_INITIAL_PASSWORD:-PerfMan2026!}
+    volumes:
+      - perfman-data:/var/lib/perfman
+    restart: unless-stopped
+volumes:
+  perfman-data:

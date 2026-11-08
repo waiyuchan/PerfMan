@@ -1,569 +1,159 @@
-<div align="center">
-    <img src="resources/img/logo_with_name.png" height="100px"/>
-    <h1>PerfMan: 性能测试管理平台</h1>
-</div>
+# PerfMan
 
-<div align="center">
-    <img src="https://img.shields.io/badge/Language-Java-orange.svg" />
-    <img src="https://img.shields.io/badge/ORM-MyBatis-blue.svg" />
-    <img src="https://img.shields.io/badge/Architecture-Spring Cloud-6db33f.svg" />
-</div>
+PerfMan 是一个开源性能测试工作空间，采用 Go 后端和中英文控制台，将业务链路编排、多地域资源调度、性能分析和发布质量判断串成一套管理流程。
 
-<h4 align="center">
-    中文 | <a href="README.md">English</a>
-</h4>
+[English](README.md) · 简体中文
 
-PerfMan 是一个基于Spring Cloud微服务架构的开源综合性能管理平台，旨在为现代云应用提供一站式的环境管理、项目管理、测试场景和任务管理、通知管理等解决方案。
+[快速启动](#快速启动) · [功能](#可以体验什么) · [业务流程](#业务流程) · [架构](#系统架构) · [截图](#功能截图) · [文档](docs/README.md)
 
-## 功能特点
+## 快速启动
 
-- **服务发现**: 使用Eureka实现的中心化服务注册与发现。
-- **API网关**: 使用Spring Cloud Gateway实现的统一服务入口。
-- **配置管理**: 通过Spring Cloud Config实现的中心化配置管理。
-- **身份与访问管理**: 支持用户注册、登录、权限控制。
-- **通知服务**: 实现应用内和邮件通知。
-- **环境与资源管理**: 管理节点、集群并监控资源。
-- **项目管理**: 提供项目创建、成员管理、项目搜索等功能。
-- **测试管理**: 创建、管理和执行测试场景与任务。
-- **告警服务**: 可配置的告警规则和通知设置。
+安装 Go 1.26+ 和 SQLite 所需的 C 编译器（macOS 的 clang 或 Linux 的 gcc），在仓库根目录执行：
 
-## 快速开始
-
-### 环境要求
-
-- JDK 8 或更高版本
-- Maven 3.8 或更高版本
-
-### 安装步骤
-
-克隆PerfMan项目仓库：
-
-```bash
-git clone https://github.com/waiyuchan/PerfMan.git
-cd perfman
+```sh
+cd studio
+go run ./cmd/perfman
 ```
 
-使用Maven构建项目：
+打开 [http://127.0.0.1:8099](http://127.0.0.1:8099)，使用 **`alex.morgan@acme.io`** / **`PerfMan2026!`** 登录。控制台默认英文，可在顶部切换简体中文。Go 工作空间无需启动 Java 服务、外部数据库或前端构建工具。
 
-```bash
-mvn clean install
+首次启动创建 Acme Engineering：3 个项目、3 个资源组、18 个托管节点、12 个场景，以及环境、参数文件和 18 条历史运行记录。账号和业务数据均为合成数据，保存的修改在重启后保留。
+
+| 账号 | 角色 | 体验入口 |
+| --- | --- | --- |
+| `alex.morgan@acme.io` | 管理员 | 项目、成员、策略及完整工作空间 |
+| `jamie.taylor@acme.io` | 工程师 | 场景编排、调试、执行和结果分析 |
+| `riley.chen@acme.io` | 运维 | 资源组、节点、Pod 和终端 |
+| `casey.lee@acme.io` | 只读用户 | 已授权的 Commerce 场景、运行和报告 |
+
+四个初始化账号共用上述密码。可在新数据库初始化前设置 `PERFMAN_INITIAL_PASSWORD`；该变量不会重置已有账号。每个数据库对应一个组织工作空间，跨组织 SaaS 租户隔离和计费尚未实现。
+
+## 可以体验什么
+
+| 工作流 | 功能 |
+| --- | --- |
+| 编排真实测试链路 | 简单请求链路、可执行 JavaScript 或受支持的 JMX 计划；请求头、正文、提取器、检查点、思考时间和负载模型。 |
+| 复用数据与配置 | CSV 参数、协议包、请求文件、脚本模块、环境变量、节点间 CSV 分片和加密密钥。 |
+| 覆盖多种协议 | HTTP、gRPC、Protobuf、WebSocket、Socket.IO、SQL、Redis、TCP/UDP 托管夹具；SQL、Redis 操作会影响上下文内的后续调用。 |
+| 管理执行资源 | 资源组、地域比例、节点容量、排队准入、组并行度、模拟扩容、Pod 和启动屏障。 |
+| 监控与定位问题 | 实时序列、服务/脚本/地域维度、自定义图表、检查点、日志、请求采样和冻结快照。 |
+| 控制发布质量 | 连续窗口 SLA、独立停止/通知动作、告警历史、确认处理及投递记录。 |
+| 自动化与流量复用 | 带 IANA 时区的一次性/cron 计划、执行历史、HAR 导入、托管录制和录制转场景。 |
+| 分析与运维 | 基线对比、JSON/CSV、打印 PDF、探测/排空/断开节点、可审计虚拟终端、项目/标签策略及操作审计。 |
+
+### 功能设计图
+
+![PerfMan 九个功能领域：访问、编排、配置、资源、调度、监控、质量、自动化和运维](docs/design/feature-map.svg)
+
+[PNG](docs/design/feature-map.png) · [可编辑 Excalidraw](docs/design/feature-map.excalidraw) · [设计说明与代码依据](docs/design/README.md)
+
+## 业务流程
+
+1. 登录并选择项目，准备环境和测试文件。
+2. 编排简单、JavaScript 或 JMeter 场景，设置检查点、提取器、负载分布和 SLA。
+3. 校验、调试后立即运行，或配置带时区的执行计划。
+4. 跟踪排队、容量预留、Pod 就绪和运行，查看指标与采样，按需调整 RPS 或停止。
+5. 查看质量判定、定位告警、对比和导出报告；任务结束后归还资源。
+
+![从登录和场景编排，经地域调度、节点执行、质量判断，到最终报告的十二步业务流程](docs/design/business-flow.svg)
+
+[PNG](docs/design/business-flow.png) · [可编辑 Excalidraw](docs/design/business-flow.excalidraw) · [生命周期和失败路径](docs/design/README.md#run-lifecycle)
+
+容量不足时任务保持排队。达到时长、取消、SLA 保护和引擎异常会进入结束处理；节点丢失产生部分完成、结果不完整的判定。控制器重启会将未完成任务标记为中断并释放分配。
+
+## 系统架构
+
+![实际运行架构：双语控制台调用单个 Go 进程，包含权限、调度、托管执行上下文、引擎、报告及运维，使用 SQLite 和独立加密密钥](docs/architecture/saas-runtime.svg)
+
+[PNG](docs/architecture/saas-runtime.png) · [可编辑 Excalidraw](docs/architecture/saas-runtime.excalidraw) · [代码依据](docs/architecture/saas-runtime-model.json)
+
+| 层次 | 实现 |
+| --- | --- |
+| Web 控制台 | [`studio/console/`](studio/console/) 中的响应式 HTML/CSS/JavaScript，嵌入 Go 二进制，无需前端构建。 |
+| API 与权限 | [`workspace.go`](studio/workspace.go) 实现同源 JSON API、Cookie 会话、bcrypt、项目成员、输入校验和乐观版本；[`workspace_policy.go`](studio/workspace_policy.go) 细化项目/标签/动作授权。 |
+| 调度与生命周期 | [`workspace_scheduler.go`](studio/workspace_scheduler.go) 管理定时任务、排队准入、地域容量、分片、就绪、取消、质量窗口和资源释放。 |
+| 执行引擎 | [`workspace_engine.go`](studio/workspace_engine.go) 执行检查点、提取和 Goja 脚本；[`workspace_jmeter.go`](studio/workspace_jmeter.go) 解析受支持的 JMX；[`workspace_protocols.go`](studio/workspace_protocols.go) 提供有状态夹具。 |
+| 采集与报告 | [`workspace_series.go`](studio/workspace_series.go) 汇总节点样本、序列和整数预算；[`workspace_metrics.go`](studio/workspace_metrics.go) 导出受权限约束的指标。合并直方图桶后计算分位数。 |
+| 持久化 | SQLite WAL 保存实体、会话和冻结执行包；AES-GCM 加密环境密钥，密钥文件为独立的 `workspace.key`。文件当前保存在实体数据中。 |
+
+当前采用模块化单体、单控制器和单 SQLite，便于本地复现完整流程。真实分布式部署还需认证代理、持久化指标接入、复制存储和生产资源适配器。[未来目标架构](docs/architecture/solution-target.svg) 与上述实际运行图分开保存。
+
+## 功能截图
+
+以下为实际应用界面，使用合成业务数据。点击展示板查看完整分辨率。
+
+| 场景编排 | 分布式执行与资源 |
+| --- | --- |
+| [![登录、HTTP 链路、JavaScript 与 JMeter 编辑器](docs/showcase/01-authoring.png)](docs/showcase/01-authoring.png) | [![运行概览、地域分片、资源组和监控](docs/showcase/02-execution.png)](docs/showcase/02-execution.png) |
+| **质量判断与问题分析** | **工作空间运维** |
+| [![基线对比、指标分析、SLA 和告警定位](docs/showcase/03-quality.png)](docs/showcase/03-quality.png) | [![环境配置、计划、成员权限和 Pod 终端](docs/showcase/04-operations.png)](docs/showcase/04-operations.png) |
+
+[单页截图及采集说明](docs/showcase/README.md) · [中文控制台](docs/showcase/screens/chinese-resources.png) · [移动端](docs/showcase/screens/mobile-overview.png)
+
+## 执行能力边界
+
+默认提供方在**同一个 Go 进程中**管理多个节点和 Pod。每个节点执行有界代表样本，再按逻辑负载生成指标；这些 VU/RPS 是模拟结果，不代表真实机器的发压能力。
+
+| 领域 | 当前行为 |
+| --- | --- |
+| Native HTTP | 真实请求自带的本地目标，记录实测总耗时，不访问任意外部目标。 |
+| 网络协议 | gRPC、WebSocket、Socket.IO、Redis、TCP/UDP、Protobuf 为托管夹具；Protobuf 使用 JSON 往返模拟，尚非 wire 编码。 |
+| 数据操作 | SQL 在每个上下文独立的内存 SQLite 中执行真实语句，禁止附加宿主数据库；Redis 和 Socket 保存虚拟状态。 |
+| JMeter | 支持部分 HTTP/TCP/WebSocket sampler、线程组、循环、CSV、吞吐限制和断言；不启动 JVM，不执行 BeanShell/JSR223 或上传插件。 |
+| 基础设施与终端 | 探测、集群、Pod 和终端由后端模拟；不调用 Kubernetes API、SSH 或宿主机 Shell。 |
+| 通知与录制 | 工作空间通知收件箱可用；外部邮件/Webhook 模拟投递。托管录制采集内置目标，也可导入 HAR。 |
+
+详细行为、限制和扩展位置见[实现矩阵](docs/product/IMPLEMENTATION.md)。管理流程已落地；生产级云压测需要接入真实外部执行器。
+
+## 配置与存储
+
+| 变量 | 默认值 | 用途 |
+| --- | --- | --- |
+| `PERFMAN_ADDR` | `127.0.0.1:8099` | 监听地址 |
+| `PERFMAN_DATA` | `data/workspace.db` | 相对进程工作目录的数据库路径 |
+| `PERFMAN_INITIAL_PASSWORD` | `PerfMan2026!` | 仅用于新数据库的初始化账号密码 |
+
+运行中使用 SQLite 备份 API；复制整个数据目录前先停止服务。备份需保留 `workspace.key`，丢失后无法解密环境密钥。仅复制运行中的 `.db` 可能遗漏 WAL 中的修改。运行数据库和密钥已排除在 Git 之外。
+
+[配套配置仓库](https://github.com/waiyuchan/perfman-config-repo) 保留原 Spring 配置；Go 使用环境变量管理进程配置，使用版本化工作空间实体管理项目、环境、文件和策略。配套检出目录补有 Go 环境示例及迁移说明。
+
+## Docker
+
+在仓库根目录执行：
+
+```sh
+docker compose up --build
 ```
 
-## 配置中心更新指南
+访问 [http://127.0.0.1:8099](http://127.0.0.1:8099)。容器以非 root 用户运行，通过 `perfman-data` 卷保存 `/var/lib/perfman`，Compose 从环境读取初始密码。本次环境的 Docker 引擎未启动，尚未实际验证容器启动；Go 原生启动已验证。
 
-### 简介
+## 开发与验证
 
-此指南介绍如何通过更新Git仓库中的配置文件来更新PerfMan项目的配置中心配置。配置中心使用Spring Cloud Config
-Server，从Git仓库中拉取配置文件，并将其提供给各个微服务。
+从仓库根目录执行：
 
-### 步骤
-
-#### 1. 克隆配置仓库
-
-首先，克隆配置仓库到本地：
-
-```bash
-git clone https://github.com/waiyuchan/perfman-config-repo.git
-cd perfman-config-repo
+```sh
+(cd studio && go test -race ./...)
+(cd studio && go vet ./...)
+node scripts/docs/check-docs.mjs
 ```
 
-### 2. 更新配置文件
+当前包含 23 项顶层 Go 测试和协议场景子测试，覆盖权限、冻结快照、密钥、脚本限制、有状态夹具、地域分配、计数一致性、SLA、节点丢失、终端审计、计划和持久化。[验证记录](docs/product/VALIDATION.md) 说明浏览器流程及尚未验证的外部集成。
 
-在克隆下来的仓库中，找到需要更新的配置文件，例如 `application.yml` 或具体服务的配置文件（如 `perfman-project-service.yml`）。
+图形生成器、可编辑源文件、校验契约及截图版式一并提供，见[文档维护说明](scripts/docs/README.md)。
 
-#### 操作示例：
+## 文档与工程沿革
 
-更新 `application.yml` 文件：
+| 文档 | 内容 |
+| --- | --- |
+| [文档索引](docs/README.md) | 架构、产品、API、视觉材料和研究 |
+| [功能与流程设计](docs/design/README.md) | 功能图、业务流程和生命周期 |
+| [实现矩阵](docs/product/IMPLEMENTATION.md) | 实现行为和模拟边界 |
+| [Workspace API](docs/product/API.md) | 编排、运行、运维及指标接口 |
+| [截图集](docs/showcase/README.md) | 单页截图、展示板和采集信息 |
+| [PTS 功能研究](docs/research/PTS_REVIEW_2026-11-08.zh.md) | 53 篇官方文档的参考设计梳理 |
 
-```yaml
-# application.yml
-spring:
-  application:
-    name: perfman-config-service
-    # 新增或修改配置项
-    new-property: newValue
-```
-
-更新 `perfman-project-service.yml` 文件：
-
-```yaml
-# perfman-project-service.yml
-project:
-  setting1: newValue1
-  setting2: newValue2
-```
-
-### 3. 提交并推送更改
-
-将更改提交到Git仓库：
-
-```bash
-git add .
-git commit -m "Update configuration for perfman-project-service"
-git push origin master
-```
-
-### 4. 刷新配置
-
-为了使更改生效，需要通知配置中心刷新配置。可以通过以下两种方式实现：
-
-#### 方式一：使用Spring Boot Actuator端点刷新
-
-如果客户端应用启用了Spring Boot Actuator，可以访问 `/actuator/refresh` 端点刷新配置。
-
-```bash
-curl -X POST http://localhost:8080/actuator/refresh
-```
-
-#### 方式二：手动重启客户端应用
-
-手动重启需要更新配置的客户端应用，使其重新从配置中心拉取最新的配置。
-
-### 常见问题
-
-#### 问题1：配置未生效
-
-确保已经推送更改到Git仓库，并且客户端应用已经刷新配置或重启。
-
-#### 问题2：配置拉取失败
-
-检查配置中心的 `application.yml` 文件中的Git仓库配置是否正确：
-
-```yaml
-spring:
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/waiyuchan/perfman-config-repo
-          search-paths: config-repo
-          clone-on-start: true
-```
-
-确保Git仓库的URL正确，且仓库中包含需要的配置文件。
-
-## 基于Eureka的新服务注册和发现
-
-### 步骤
-
-#### 1. 添加Eureka Client依赖
-
-在服务的 `pom.xml` 文件中添加 Spring Cloud Netflix Eureka Client 的依赖：
-
-```xml
-
-<dependencies>
-    <!-- Other dependencies -->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-</dependencies>
-```
-
-#### 2. 配置 `application.yml`
-
-在服务的 `src/main/resources/application.yml` 文件中添加 Eureka 客户端配置：
-
-```yaml
-spring:
-  application:
-    name: <service-name>  # 替换为具体服务名称
-
-  cloud:
-    config:
-      uri: http://localhost:8888  # Config Server的地址
-      name: <service-name>  # 替换为具体服务名称
-      profile: default
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-```
-
-#### 3. 启用Eureka客户端
-
-在服务的主类文件中启用Eureka客户端。假设主类文件为 `PerfmanServiceApplication.java`：
-
-```java
-package com.perfman.service;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
-@SpringBootApplication
-@EnableEurekaClient
-public class PerfmanServiceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(PerfmanServiceApplication.class, args);
-    }
-}
-```
-
-#### 4. 启动服务
-
-按照以下步骤启动服务：
-
-1. 确保 `perfman-discovery-service` 已经启动并运行在 `http://localhost:8761`。
-2. 启动新的服务，该服务将在启动时自动注册到Eureka。
-
-#### 5. 验证服务注册
-
-在浏览器中访问 `http://localhost:8761`，可以看到已经注册到Eureka的所有服务，包括新的服务。
-
-#### 6. 配置其他服务调用新服务
-
-其他服务可以通过服务名称调用新注册的服务，确保所有服务都可以互相发现。以下是一个示例：
-
-```yaml
-# 其他服务的 application.yml 配置
-spring:
-  application:
-    name: other-service
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-```
-
-在代码中使用 `RestTemplate` 调用新服务：
-
-```java
-package com.perfman.otherservice;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-@Service
-public class OtherService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    public String callNewService() {
-        return restTemplate.getForObject("http://<service-name>/endpoint", String.class);
-    }
-}
-
-@Configuration
-class Config {
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-}
-```
-
-#### 常见问题
-
-##### 问题1：服务未注册到Eureka
-
-- 确保服务的 `application.yml` 文件中已正确配置Eureka客户端。
-- 确保Eureka服务器（perfman-discovery-service）已启动并运行在指定地址。
-
-##### 问题2：服务无法发现其他服务
-
-- 确保所有服务都已正确注册到Eureka，并且Eureka服务器运行正常。
-- 检查服务名称是否正确，确保服务名称与Eureka中注册的名称一致。
-
-### 运行服务
-
-启动Eureka Server：
-
-```bash
-cd perfman-discovery-service
-mvn spring-boot:run
-```
-
-重复上述步骤以启动其它服务，将`perfman-discovery-service`替换为您想要启动的服务目录名。
-
-## 如何自动生成数据库 Model 和 Mapper
-
-本项目使用 MyBatis Generator（MBG） 自动生成数据库表对应的 Model 和 Mapper 文件。以下是针对各个微服务的具体步骤：
-
-### 前提条件
-
-1. 确保已安装 Maven。
-2. 确保 MySQL 数据库已启动，并且相关表结构已创建。
-3. 确保配置中心 (`perfman-config-service`) 正常运行，并已配置数据库连接信息。
-
-### 通用步骤
-
-1. **在 `pom.xml` 中添加 MyBatis Generator 依赖**
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>2.1.4</version>
-    </dependency>
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-core</artifactId>
-        <version>1.4.0</version>
-    </dependency>
-</dependencies>
-
-<build>
-<plugins>
-    <plugin>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <configuration>
-            <verbose>true</verbose>
-            <overwrite>true</overwrite>
-        </configuration>
-        <executions>
-            <execution>
-                <id>Generate MyBatis Artifacts</id>
-                <goals>
-                    <goal>generate</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-</plugins>
-</build>
-```
-
-2. **在 `src/main/resources` 目录下创建 `generatorConfig.xml` 文件**
-
-以 `perfman-auth-service` 为例：
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    <context id="MySQLTables" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/perfman"
-                        userId="root"
-                        password="Test123456"/>
-
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
-        <javaModelGenerator targetPackage="com.code4faster.perfmanauthservice.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanauthservice.mapper"
-                             targetProject="src/main/java"/>
-
-        <table tableName="users" domainObjectName="User"/>
-        <table tableName="roles" domainObjectName="Role"/>
-        <table tableName="permissions" domainObjectName="Permission"/>
-        <table tableName="user_roles" domainObjectName="UserRole"/>
-        <table tableName="role_permissions" domainObjectName="RolePermission"/>
-        <table tableName="user_tokens" domainObjectName="UserToken"/>
-    </context>
-</generatorConfiguration>
-```
-
-根据不同的微服务，修改 `targetPackage` 和表名。
-
-3. **在命令行中运行 MyBatis Generator**
-
-```bash
-mvn mybatis-generator:generate
-```
-
-### 各个微服务的配置示例
-
-#### perfman-auth-service
-
-目录结构：
-
-```
-perfman-auth-service
-│
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─code4faster
-    │  │          └─perfmanauthservice
-    │  │              │  PerfmanAuthServiceApplication.java
-    │  │              │
-    │  │              ├─model
-    │  │              │      User.java
-    │  │              │      Role.java
-    │  │              │      Permission.java
-    │  │              │      UserRole.java
-    │  │              │      RolePermission.java
-    │  │              │      UserToken.java
-    │  │              │
-    │  │              ├─mapper
-    │  │              │      UserMapper.java
-    │  │              │      RoleMapper.java
-    │  │              │      PermissionMapper.java
-    │  │              │      UserRoleMapper.java
-    │  │              │      RolePermissionMapper.java
-    │  │              │      UserTokenMapper.java
-    │  │              │
-    │  │              ├─service
-    │  │              │      UserService.java
-    │  │              │      RoleService.java
-    │  │              │      PermissionService.java
-    │  │              │      UserRoleService.java
-    │  │              │      RolePermissionService.java
-    │  │              │      UserTokenService.java
-    │  │              │
-    │  │              └─controller
-    │  │                     AuthController.java
-    │  │                     # Other controllers
-    │  └─resources
-    │      │  application.yml
-    │      │  generatorConfig.xml
-    │      └─mapper
-    │              UserMapper.xml
-    │              RoleMapper.xml
-    │              PermissionMapper.xml
-    │              UserRoleMapper.xml
-    │              RolePermissionMapper.xml
-    │              UserTokenMapper.xml
-```
-
-#### perfman-project-service
-
-1. **配置 `generatorConfig.xml`**
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    <context id="MySQLTables" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/perfman"
-                        userId="root"
-                        password="Test123456"/>
-
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
-        <javaModelGenerator targetPackage="com.code4faster.perfmanprojectservice.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanprojectservice.mapper"
-                             targetProject="src/main/java"/>
-
-        <table tableName="projects" domainObjectName="Project"/>
-        <table tableName="project_members" domainObjectName="ProjectMember"/>
-        <table tableName="project_invitations" domainObjectName="ProjectInvitation"/>
-    </context>
-</generatorConfiguration>
-```
-
-2. **生成 Model 和 Mapper**
-
-    ```bash
-    mvn mybatis-generator:generate
-    ```
-
-目录结构：
-
-```
-perfman-project-service
-│
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─code4faster
-    │  │          └─perfmanprojectservice
-    │  │              │  PerfmanProjectServiceApplication.java
-    │  │              │
-    │  │              ├─model
-    │  │              │      Project.java
-    │  │              │      ProjectMember.java
-    │  │              │      ProjectInvitation.java
-    │  │              │
-    │  │              ├─mapper
-    │  │              │      ProjectMapper.java
-    │  │              │      ProjectMemberMapper.java
-    │  │              │      ProjectInvitationMapper.java
-    │  │              │
-    │  │              ├─service
-    │  │              │      ProjectService.java
-    │  │              │      ProjectMemberService.java
-    │  │              │      ProjectInvitationService.java
-    │  │              │
-    │  │              └─controller
-    │  │                     ProjectController.java
-    │  │                     # Other controllers
-    │  └─resources
-    │      │  application.yml
-    │      │  generatorConfig.xml
-    │      └─mapper
-    │              ProjectMapper.xml
-    │              ProjectMemberMapper.xml
-    │              ProjectInvitationMapper.xml
-```
-
-### 其他微服务
-
-按照上述示例，为其他微服务创建 `generatorConfig.xml`，并调整
-
-`targetPackage` 和表名，然后运行 MyBatis Generator 生成对应的 Model 和 Mapper 文件。
-
-## 服务启动顺序
-
-- [perfman-discovery-service](perfman-discovery-service)
-- [perfman-config-service](perfman-config-service)
-- [perfman-auth-service](perfman-auth-service)
-
-**特别注意：**
-
-如果没有配置真实的邮件服务器，可以通过启动一个maildog来mock邮件服务器，完成auth服务器启动
-
-## 文档
-
-更详细的文档，请访问[Wiki页面](https://github.com/yourusername/perfman/wiki)。
-
-## 贡献指南
-
-欢迎为PerfMan贡献力量！请阅读我们的[贡献指南](CONTRIBUTING.md)，了解如何提交Pull Request、报告bug和建议改进。
+原 Spring Cloud 服务作为迁移参考保留，无需参与 Go 工作空间启动。原操作说明位于 [docs/legacy](docs/legacy/README.zh.md)，当前入口为 [`studio/cmd/perfman`](studio/cmd/perfman)。
 
 ## 许可证
 
-PerfMan是根据[Apache-2.0 许可证](LICENSE)开源的软件。
-
-## 致谢
-
-- 感谢Spring Cloud提供微服务架构支持。
-- 感谢Eureka实现服务发现。
-- 感谢Spring Cloud Gateway管理API网关。
-- 感谢所有PerfMan项目的贡献者和支持者。
+采用 [Apache License 2.0](LICENSE)。

@@ -1,0 +1,181 @@
+{
+  "capturedAt": "2026-11-08",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "provenance": "Actual PerfMan Go workspace screenshots; all account and business data is synthetic. The default provider is a managed simulator.",
+  "boards": [
+    {
+      "id": "authoring",
+      "file": "01-authoring.png",
+      "number": "01",
+      "title": "Scenario authoring",
+      "description": "Sign in, build request journeys, compose JavaScript and configure JMX plans.",
+      "screens": [
+        {
+          "title": "Workspace sign-in",
+          "caption": "Persistent sessions, project scope and role-based access.",
+          "image": "screens/sign-in.png",
+          "route": "/"
+        },
+        {
+          "title": "Simple request journeys",
+          "caption": "Headers, chained extraction and response checks.",
+          "image": "screens/simple-editor.png",
+          "route": "/#scenarios/scn_checkout"
+        },
+        {
+          "title": "JavaScript composition",
+          "caption": "Weighted entries, modules and setup / teardown lifecycle.",
+          "image": "screens/script-editor.png",
+          "route": "/#scenarios/scn_mixed"
+        },
+        {
+          "title": "JMeter plan configuration",
+          "caption": "JMX dependencies, thread groups, loops and logging.",
+          "image": "screens/jmeter-editor.png",
+          "route": "/#scenarios/scn_jmeter"
+        }
+      ]
+    },
+    {
+      "id": "execution",
+      "file": "02-execution.png",
+      "number": "02",
+      "title": "Distributed execution & resources",
+      "description": "Follow a run through regional allocation, worker execution and fleet monitoring.",
+      "screens": [
+        {
+          "title": "Run overview",
+          "caption": "Throughput, latency, quality targets and execution events.",
+          "image": "screens/run-overview.png",
+          "route": "/#runs/run_fd43f5ff82d87d"
+        },
+        {
+          "title": "Regional worker shards",
+          "caption": "60 / 36 / 24 VU allocation with reconciled request totals.",
+          "image": "screens/worker-shards.png",
+          "route": "/#runs/run_fd43f5ff82d87d/workers"
+        },
+        {
+          "title": "Resource groups",
+          "caption": "Capacity, regions and operating controls for each pool.",
+          "image": "screens/resource-fleet.png",
+          "route": "/#resources/groups"
+        },
+        {
+          "title": "Fleet monitoring",
+          "caption": "Worker allocation and modeled resource utilization.",
+          "image": "screens/resource-monitoring.png",
+          "route": "/#resources/monitoring"
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "file": "03-quality.png",
+      "number": "03",
+      "title": "Quality gates & investigation",
+      "description": "Inspect performance from multiple dimensions and turn findings into release decisions.",
+      "screens": [
+        {
+          "title": "Baseline comparison",
+          "caption": "Compare workload context, response times and throughput.",
+          "image": "screens/report-comparison.png",
+          "route": "/#reports"
+        },
+        {
+          "title": "Custom metric analysis",
+          "caption": "Select dimensions and arrange the metrics that matter.",
+          "image": "screens/run-analysis.png",
+          "route": "/#runs/run_fd43f5ff82d87d/analysis"
+        },
+        {
+          "title": "SLA rules",
+          "caption": "Consecutive windows with separate stop and notify actions.",
+          "image": "screens/performance-targets.png",
+          "route": "/#scenarios/scn_checkout"
+        },
+        {
+          "title": "Alert investigation",
+          "caption": "Threshold evidence, linked runs and acknowledgement.",
+          "image": "screens/alert-inbox.png",
+          "route": "/#alerts",
+          "project": "Platform"
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "file": "04-operations.png",
+      "number": "04",
+      "title": "Workspace operations",
+      "description": "Manage configuration, recurring checks, scoped policies and audited Pod sessions.",
+      "screens": [
+        {
+          "title": "Environment editor",
+          "caption": "Versioned variables and masked environment secrets.",
+          "image": "screens/environment-editor.png",
+          "route": "/#configuration/environments"
+        },
+        {
+          "title": "Timezone-aware schedules",
+          "caption": "Pinned scenarios, cron timing and execution history.",
+          "image": "screens/schedules.png",
+          "route": "/#schedules"
+        },
+        {
+          "title": "People & access",
+          "caption": "Workspace accounts, project membership and distinct operating roles.",
+          "image": "screens/people-access.png",
+          "route": "/#settings/users"
+        },
+        {
+          "title": "Pod terminal",
+          "caption": "Backend-owned virtual sessions with command audit history.",
+          "image": "05-pod-terminal.png",
+          "route": "/#terminal/terminal_c5c32b5adfaa46",
+          "capturedAt": "2026-11-08, during the verified live run"
+        }
+      ]
+    }
+  ],
+  "additionalScreens": [
+    {
+      "title": "Performance overview",
+      "image": "screens/overview.png",
+      "route": "/#overview"
+    },
+    {
+      "title": "Configuration file library",
+      "image": "screens/file-library.png",
+      "route": "/#configuration/files"
+    },
+    {
+      "title": "Chinese resource console",
+      "image": "screens/chinese-resources.png",
+      "route": "/#resources/groups",
+      "language": "zh"
+    },
+    {
+      "title": "Mobile overview",
+      "image": "screens/mobile-overview.png",
+      "route": "/#overview",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "title": "Access policy editor",
+      "image": "screens/policy-editor.png",
+      "route": "/#settings/policies"
+    },
+    {
+      "title": "Environment list",
+      "image": "screens/environment-config.png",
+      "route": "/#configuration/environments"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "diagram": {
+    "title": "PerfMan · End-to-end testing workflow",
+    "view": "flow",
+    "direction": "left-to-right by numbered lane",
+    "question": "How does a user move from sign-in to a finalized report?"
+  },
+  "nodes": [
+    {
+      "id": "sign-in",
+      "label": "01  Sign in & choose project",
+      "subtitle": "Check session, role and membership\nSelect the working environment",
+      "step": 1,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "authoring",
+      "owner": "workspace user",
+      "evidence": "studio/workspace.go"
+    },
+    {
+      "id": "author",
+      "label": "02  Build a scenario",
+      "subtitle": "Simple / JavaScript / JMeter\nBind data, checks, load and regions",
+      "step": 2,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "authoring",
+      "owner": "workspace user",
+      "evidence": "studio/console/editors.js"
+    },
+    {
+      "id": "validate",
+      "label": "03  Validate & debug",
+      "subtitle": "Validate files, imports and inputs\nEvaluate a bounded preview",
+      "step": 3,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "authoring",
+      "owner": "workspace user",
+      "evidence": "studio/workspace_engine.go"
+    },
+    {
+      "id": "submit",
+      "label": "04  Run or schedule",
+      "subtitle": "Start now or use a timezone plan\nCheck the pinned scenario version",
+      "step": 4,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "authoring",
+      "owner": "workspace user",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "freeze",
+      "label": "05  Freeze & queue",
+      "subtitle": "Freeze scenario, files and environment\nWait for group admission",
+      "step": 5,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "orchestration",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "allocate",
+      "label": "06  Reserve regional capacity",
+      "subtitle": "Split the VU budget across workers\nWait or simulate scale-out if needed",
+      "step": 6,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "orchestration",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "barrier",
+      "label": "07  Prepare Pods & release",
+      "subtitle": "Observe worker readiness\nRelease the shared start barrier",
+      "step": 7,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "orchestration",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "execute",
+      "label": "08  Execute worker contexts",
+      "subtitle": "Separate script state and CSV shards\nEvaluate representative samples",
+      "step": 8,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "orchestration",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_series.go"
+    },
+    {
+      "id": "collect",
+      "label": "09  Aggregate & inspect",
+      "subtitle": "Combine integer counts and histograms\nCollect logs, samples and checks",
+      "step": 9,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "assessment",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_series.go"
+    },
+    {
+      "id": "sla",
+      "label": "10  Evaluate quality windows",
+      "subtitle": "Evaluate SLA on each sample window\nTrack notify and stop independently",
+      "step": 10,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "assessment",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "finalize",
+      "label": "11  Finalize & release",
+      "subtitle": "Complete / protect / cancel / interrupt\nA lost worker stays inconclusive",
+      "step": 11,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "assessment",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "report",
+      "label": "12  Review & share results",
+      "subtitle": "Compare baseline and inspect snapshot\nExport JSON / CSV / print-to-PDF",
+      "step": 12,
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "assessment",
+      "owner": "Go Workspace",
+      "evidence": "studio/console/views.js"
+    }
+  ],
+  "flows": [
+    {
+      "from": "sign-in",
+      "to": "author",
+      "label": "Select project scope",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "author",
+      "to": "validate",
+      "label": "Bind and edit scenario",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "validate",
+      "to": "submit",
+      "label": "Validate before admission",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "submit",
+      "to": "freeze",
+      "label": "Admit frozen bundle",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "freeze",
+      "to": "allocate",
+      "label": "Reserve worker budget",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "allocate",
+      "to": "barrier",
+      "label": "Provision and await readiness",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "barrier",
+      "to": "execute",
+      "label": "Release start barrier",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "execute",
+      "to": "collect",
+      "label": "Collect bounded samples",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "collect",
+      "to": "sla",
+      "label": "Evaluate sampled windows",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "sla",
+      "to": "finalize",
+      "label": "Finalize on duration / stop / failure",
+      "semantic": "sync-call",
+      "direction": "forward"
+    },
+    {
+      "from": "finalize",
+      "to": "report",
+      "label": "Read finalized report",
+      "semantic": "sync-call",
+      "direction": "forward"
+    }
+  ],
+  "boundaries": [],
+  "constraints": [
+    "Capacity shortages remain queued; runs do not claim capacity that was not reserved",
+    "SLA evaluation continues window by window until duration, stop or failure",
+    "All terminal states release allocations; lost-shard runs cannot pass",
+    "Default worker execution is an in-process simulation"
+  ]
+}

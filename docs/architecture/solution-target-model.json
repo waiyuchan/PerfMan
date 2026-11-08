@@ -1,0 +1,231 @@
+{
+  "diagram": {
+    "title": "PerfMan Go · Complete solution design",
+    "view": "to-be",
+    "direction": "left-to-right",
+    "question": "How does one managed workflow connect identity, authoring, scheduling, execution and operations?"
+  },
+  "nodes": [
+    {
+      "id": "console",
+      "label": "Bilingual web console",
+      "kind": "module",
+      "plane": "client",
+      "subtitle": "Login / Author / Run / Operate",
+      "lifecycle": "new",
+      "owner": "client",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "identity",
+      "label": "Identity + policy",
+      "kind": "module",
+      "plane": "control",
+      "subtitle": "Sessions / roles / project + tag scope",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "assets",
+      "label": "Projects + assets",
+      "kind": "module",
+      "plane": "control",
+      "subtitle": "Environments / files / recordings",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "scheduler",
+      "label": "Run + resource scheduler",
+      "kind": "module",
+      "plane": "control",
+      "subtitle": "Snapshots / queue / lease / capacity / plans",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "metrics",
+      "label": "Metrics + reports",
+      "kind": "module",
+      "plane": "control",
+      "subtitle": "Histograms / checks / samples / views",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "operations",
+      "label": "Operations gateway",
+      "kind": "module",
+      "plane": "control",
+      "subtitle": "SLA / notifications / terminal / audit",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "agent",
+      "label": "Go agent",
+      "kind": "process",
+      "plane": "execution",
+      "subtitle": "Claim / heartbeat / isolate / stop",
+      "lifecycle": "new",
+      "owner": "execution",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "engine",
+      "label": "Engine adapters",
+      "kind": "module",
+      "plane": "execution",
+      "subtitle": "Script / HTTP / protocols / JMeter",
+      "lifecycle": "new",
+      "owner": "execution",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "provider",
+      "label": "Resource providers",
+      "kind": "module",
+      "plane": "execution",
+      "subtitle": "Simulator / Agent / Docker / K8s",
+      "lifecycle": "new",
+      "owner": "execution",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "target",
+      "label": "Target transports",
+      "kind": "module",
+      "plane": "execution",
+      "subtitle": "Fixtures or authorised endpoints",
+      "lifecycle": "new",
+      "owner": "execution",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "meta",
+      "label": "Metadata store",
+      "kind": "store",
+      "plane": "persistence",
+      "subtitle": "SQLite first / PostgreSQL scale-out",
+      "lifecycle": "new",
+      "owner": "persistence",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    },
+    {
+      "id": "files",
+      "label": "Versioned artifact store",
+      "kind": "store",
+      "plane": "persistence",
+      "subtitle": "Local content-addressed / object storage",
+      "lifecycle": "new",
+      "owner": "persistence",
+      "evidence": "Proposal: docs/product/SOLUTION_SPEC.zh.md"
+    }
+  ],
+  "flows": [
+    {
+      "from": "console",
+      "to": "identity",
+      "semantic": "sync-call",
+      "label": "HTTP / session / policy",
+      "direction": "forward"
+    },
+    {
+      "from": "identity",
+      "to": "scheduler",
+      "semantic": "sync-call",
+      "label": "Authorise actions",
+      "direction": "forward"
+    },
+    {
+      "from": "assets",
+      "to": "scheduler",
+      "semantic": "data-read",
+      "label": "Freeze immutable bundle",
+      "direction": "forward"
+    },
+    {
+      "from": "scheduler",
+      "to": "agent",
+      "semantic": "async-event",
+      "label": "Assignment / epoch / cancel",
+      "direction": "forward"
+    },
+    {
+      "from": "agent",
+      "to": "engine",
+      "semantic": "sync-call",
+      "label": "Start / update / collect",
+      "direction": "forward"
+    },
+    {
+      "from": "scheduler",
+      "to": "provider",
+      "semantic": "sync-call",
+      "label": "Provision / observe / release",
+      "direction": "forward"
+    },
+    {
+      "from": "engine",
+      "to": "target",
+      "semantic": "sync-call",
+      "label": "Invoke protocol adapter",
+      "direction": "forward"
+    },
+    {
+      "from": "agent",
+      "to": "metrics",
+      "semantic": "async-event",
+      "label": "Metric batch / log / sample",
+      "direction": "forward"
+    },
+    {
+      "from": "metrics",
+      "to": "operations",
+      "semantic": "async-event",
+      "label": "SLA / report events",
+      "direction": "forward"
+    },
+    {
+      "from": "scheduler",
+      "to": "meta",
+      "semantic": "data-write",
+      "label": "Persist task state / outbox",
+      "direction": "forward"
+    },
+    {
+      "from": "assets",
+      "to": "files",
+      "semantic": "data-write",
+      "label": "Store versions / content hash",
+      "direction": "forward"
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "control",
+      "label": "Go control plane",
+      "owner": "server",
+      "lifecycle": "new",
+      "evidence": "Proposal"
+    },
+    {
+      "id": "execution",
+      "label": "Execution + provider plane",
+      "owner": "agents",
+      "lifecycle": "new",
+      "evidence": "Proposal"
+    }
+  ],
+  "constraints": [
+    "All components are target design, not a completion claim",
+    "Simulator replaces external providers; control workflows remain server-owned",
+    "SSH and Kubernetes exec use different terminal transports",
+    "JMeter engine retains JVM; management and orchestration are Go"
+  ]
+}

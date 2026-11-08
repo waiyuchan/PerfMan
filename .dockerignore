@@ -1,0 +1,8 @@
+.git
+studio/data
+studio/perfman
+**/target
+node_modules
+docs
+resources
+perfman-*

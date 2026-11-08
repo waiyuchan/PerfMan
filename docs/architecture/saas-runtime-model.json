@@ -1,0 +1,191 @@
+{
+  "diagram": {
+    "title": "PerfMan · Implemented Go workspace",
+    "view": "as-is",
+    "direction": "left-to-right",
+    "question": "What runs today, and where does simulated execution end?"
+  },
+  "nodes": [
+    {
+      "id": "console",
+      "label": "Bilingual console",
+      "kind": "client",
+      "plane": "browser",
+      "lifecycle": "existing",
+      "owner": "web client",
+      "evidence": "studio/console/app.js",
+      "subtitle": "Author / Execute / Investigate"
+    },
+    {
+      "id": "api",
+      "label": "API + authorization",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace.go",
+      "subtitle": "Session / Role / Project / Tag policy"
+    },
+    {
+      "id": "scheduler",
+      "label": "Run + resource scheduler",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace_scheduler.go",
+      "subtitle": "Queue / Allocate / Barrier / Lease / Release"
+    },
+    {
+      "id": "workers",
+      "label": "Managed worker contexts",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace_series.go",
+      "subtitle": "Per-worker JS state / CSV partition"
+    },
+    {
+      "id": "protocols",
+      "label": "Protocol + JMX engines",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace_engine.go",
+      "subtitle": "Fixtures / SQLite SQL / Stateful Redis"
+    },
+    {
+      "id": "reports",
+      "label": "Metrics + reports",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace_metrics.go",
+      "subtitle": "Histograms / Series / Samples / Comparison"
+    },
+    {
+      "id": "ops",
+      "label": "Operations + SLA",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace_scheduler.go",
+      "subtitle": "Schedules / Inbox / Virtual terminal / Audit"
+    },
+    {
+      "id": "store",
+      "label": "Workspace SQLite",
+      "kind": "store",
+      "plane": "disk",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace.go",
+      "subtitle": "Entities / Sessions / Frozen bundles"
+    },
+    {
+      "id": "key",
+      "label": "Environment encryption key",
+      "kind": "artifact",
+      "plane": "disk",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace.go",
+      "subtitle": "AES-GCM / workspace.key / Mode 0600"
+    },
+    {
+      "id": "target",
+      "label": "Bundled HTTP target",
+      "kind": "module",
+      "plane": "go",
+      "lifecycle": "existing",
+      "owner": "single Go deployment",
+      "evidence": "studio/workspace.go",
+      "subtitle": "Native mode: measured loopback requests"
+    }
+  ],
+  "flows": [
+    {
+      "from": "console",
+      "to": "api",
+      "semantic": "sync-call",
+      "label": "JSON / session cookie",
+      "direction": "forward"
+    },
+    {
+      "from": "api",
+      "to": "scheduler",
+      "semantic": "sync-call",
+      "label": "Admit frozen run",
+      "direction": "forward"
+    },
+    {
+      "from": "scheduler",
+      "to": "workers",
+      "semantic": "sync-call",
+      "label": "Assign shards / cancel",
+      "direction": "forward"
+    },
+    {
+      "from": "workers",
+      "to": "protocols",
+      "semantic": "sync-call",
+      "label": "Execute bounded samples",
+      "direction": "forward"
+    },
+    {
+      "from": "workers",
+      "to": "reports",
+      "semantic": "data-write",
+      "label": "Collect weighted samples",
+      "direction": "forward"
+    },
+    {
+      "from": "reports",
+      "to": "ops",
+      "semantic": "sync-call",
+      "label": "Evaluate SLA windows",
+      "direction": "forward"
+    },
+    {
+      "from": "scheduler",
+      "to": "store",
+      "semantic": "data-write",
+      "label": "Commit lifecycle + bundles",
+      "direction": "forward"
+    },
+    {
+      "from": "key",
+      "to": "store",
+      "semantic": "data-write",
+      "label": "Encrypt environment secrets",
+      "direction": "forward"
+    },
+    {
+      "from": "protocols",
+      "to": "target",
+      "semantic": "sync-call",
+      "label": "Native HTTP loopback only",
+      "direction": "forward"
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "process",
+      "label": "Single Go process",
+      "type": "process",
+      "owner": "workspace server",
+      "lifecycle": "existing",
+      "evidence": "studio/cmd/perfman/main.go"
+    }
+  ],
+  "constraints": [
+    "Workers and Pods are managed in-process simulations, not remote agents",
+    "Only native HTTP invokes the bundled target; no external SSH / Kubernetes / JVM",
+    "State and sessions persist in SQLite; encryption key is separate",
+    "Production HA, external providers and durable distributed ingestion remain extensions"
+  ]
+}

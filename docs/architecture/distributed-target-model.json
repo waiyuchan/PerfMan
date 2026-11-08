@@ -1,0 +1,168 @@
+{
+  "diagram": {
+    "title": "PerfMan · Distributed target architecture",
+    "view": "to-be",
+    "direction": "left-to-right",
+    "question": "How can the control plane evolve independently from load generation?"
+  },
+  "boundaries": [
+    {
+      "id": "control-plane",
+      "label": "Modular control plane",
+      "lifecycle": "new",
+      "owner": "control",
+      "evidence": "proposal: docs/product/REDESIGN.zh.md"
+    },
+    {
+      "id": "execution-plane",
+      "label": "Execution plane",
+      "lifecycle": "new",
+      "owner": "workers",
+      "evidence": "proposal: docs/product/REDESIGN.zh.md"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ui",
+      "label": "Web console / CI API",
+      "kind": "module",
+      "lifecycle": "new",
+      "plane": "clients",
+      "owner": "clients",
+      "evidence": "proposal"
+    },
+    {
+      "id": "cp",
+      "label": "Project / Scenario / Run",
+      "kind": "module",
+      "lifecycle": "new",
+      "plane": "control-plane",
+      "owner": "control-plane",
+      "evidence": "proposal"
+    },
+    {
+      "id": "scheduler",
+      "label": "Scheduler / Lease",
+      "kind": "module",
+      "lifecycle": "new",
+      "plane": "control-plane",
+      "owner": "control-plane",
+      "evidence": "proposal"
+    },
+    {
+      "id": "aggregator",
+      "label": "Metric ingestion / SLA",
+      "kind": "module",
+      "lifecycle": "new",
+      "plane": "control-plane",
+      "owner": "control-plane",
+      "evidence": "proposal"
+    },
+    {
+      "id": "worker",
+      "label": "Worker agent / k6",
+      "kind": "process",
+      "lifecycle": "new",
+      "plane": "execution-plane",
+      "owner": "execution-plane",
+      "evidence": "proposal"
+    },
+    {
+      "id": "target",
+      "label": "Authorised target",
+      "kind": "external",
+      "lifecycle": "new",
+      "plane": "SUT",
+      "owner": "SUT",
+      "evidence": "proposal"
+    },
+    {
+      "id": "pg",
+      "label": "PostgreSQL",
+      "kind": "store",
+      "lifecycle": "new",
+      "plane": "control-owned",
+      "owner": "control-owned",
+      "evidence": "proposal"
+    },
+    {
+      "id": "objects",
+      "label": "Object storage",
+      "kind": "store",
+      "lifecycle": "new",
+      "plane": "artifact-owned",
+      "owner": "artifact-owned",
+      "evidence": "proposal"
+    },
+    {
+      "id": "timeseries",
+      "label": "Metric storage",
+      "kind": "store",
+      "lifecycle": "new",
+      "plane": "metrics-owned",
+      "owner": "metrics-owned",
+      "evidence": "proposal"
+    }
+  ],
+  "flows": [
+    {
+      "from": "ui",
+      "to": "cp",
+      "semantic": "sync-call",
+      "label": "Create / debug / start"
+    },
+    {
+      "from": "cp",
+      "to": "scheduler",
+      "semantic": "data-write",
+      "label": "Enqueue run transaction"
+    },
+    {
+      "from": "scheduler",
+      "to": "worker",
+      "semantic": "poll",
+      "label": "Claim shard / heartbeat / cancel"
+    },
+    {
+      "from": "worker",
+      "to": "target",
+      "semantic": "sync-call",
+      "label": "HTTP / WS / gRPC via engine"
+    },
+    {
+      "from": "worker",
+      "to": "aggregator",
+      "semantic": "async-event",
+      "label": "run + shard + epoch + seq"
+    },
+    {
+      "from": "cp",
+      "to": "pg",
+      "semantic": "data-write",
+      "label": "Version / outbox / run state"
+    },
+    {
+      "from": "worker",
+      "to": "objects",
+      "semantic": "data-read",
+      "label": "Fetch immutable bundle"
+    },
+    {
+      "from": "aggregator",
+      "to": "timeseries",
+      "semantic": "data-write",
+      "label": "Merge histograms / persist"
+    },
+    {
+      "from": "aggregator",
+      "to": "scheduler",
+      "semantic": "sync-call",
+      "label": "SLA stop command"
+    }
+  ],
+  "assumptions": [
+    "All green dashed nodes are proposals, not implemented",
+    "Initially one control instance + PostgreSQL lease queue; no Kafka required",
+    "k6 is the first future engine; JMeter/Locust come after metric contracts"
+  ]
+}

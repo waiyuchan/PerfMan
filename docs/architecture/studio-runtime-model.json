@@ -1,0 +1,110 @@
+{
+  "diagram": {
+    "title": "PerfMan Studio · Local runtime",
+    "view": "as-is",
+    "direction": "left-to-right",
+    "question": "What actually runs in the delivered demonstration?"
+  },
+  "boundaries": [
+    {
+      "id": "single",
+      "label": "Single Go process",
+      "lifecycle": "existing",
+      "owner": "studio",
+      "evidence": "studio/cmd/perfman/main.go"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "browser",
+      "label": "Web console",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "browser",
+      "owner": "browser",
+      "evidence": "studio/web/app.js"
+    },
+    {
+      "id": "control",
+      "label": "Control modules",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "single",
+      "owner": "single",
+      "evidence": "studio/http.go; studio/model.go"
+    },
+    {
+      "id": "runner",
+      "label": "HTTP runner",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "single",
+      "owner": "single",
+      "evidence": "studio/engine.go"
+    },
+    {
+      "id": "sut",
+      "label": "Demo target",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "single",
+      "owner": "single",
+      "evidence": "studio/http.go Handler /demo-api/"
+    },
+    {
+      "id": "store",
+      "label": "Atomic JSON state",
+      "kind": "store",
+      "lifecycle": "existing",
+      "plane": "storage",
+      "owner": "storage",
+      "evidence": "studio/model.go saveLocked"
+    },
+    {
+      "id": "exports",
+      "label": "Reports / k6 export",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "single",
+      "owner": "single",
+      "evidence": "studio/http.go exportK6; studio/web/app.js"
+    }
+  ],
+  "flows": [
+    {
+      "from": "browser",
+      "to": "control",
+      "semantic": "sync-call",
+      "label": "HTTP JSON / poll every 1.1s"
+    },
+    {
+      "from": "control",
+      "to": "runner",
+      "semantic": "async-event",
+      "label": "Freeze snapshot / launch goroutines"
+    },
+    {
+      "from": "runner",
+      "to": "sut",
+      "semantic": "sync-call",
+      "label": "HTTP / real loopback requests"
+    },
+    {
+      "from": "control",
+      "to": "store",
+      "semantic": "data-write",
+      "label": "Save / fsync / atomic rename"
+    },
+    {
+      "from": "control",
+      "to": "exports",
+      "semantic": "data-read",
+      "label": "Read frozen scenario and result"
+    }
+  ],
+  "assumptions": [
+    "Single trusted local workspace; no production auth",
+    "No distributed workers or external load targets",
+    "Source synthetic appears only in separately deployed browser showcase"
+  ]
+}

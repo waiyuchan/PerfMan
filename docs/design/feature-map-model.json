@@ -1,0 +1,107 @@
+{
+  "diagram": {
+    "title": "PerfMan · Product capability map",
+    "view": "as-is",
+    "direction": "top-to-bottom",
+    "question": "Which product domains make up the managed testing workflow?"
+  },
+  "nodes": [
+    {
+      "id": "access",
+      "label": "Workspace & access",
+      "subtitle": "Projects and membership\nAdmin / Engineer / Operator / Viewer\nProject + tag policies\nSession and audit history",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace.go"
+    },
+    {
+      "id": "author",
+      "label": "Scenario authoring",
+      "subtitle": "Simple request journeys\nJavaScript modules + lifecycle\nJMX plans + thread groups\nVU / RPS / ramp / spike profiles",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/console/editors.js"
+    },
+    {
+      "id": "assets",
+      "label": "Data & configuration",
+      "subtitle": "CSV parameters and partitions\nEnvironment variables + secrets\nProtocol bundles and script modules\nJMX and plugin dependencies",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_assets.go"
+    },
+    {
+      "id": "fleet",
+      "label": "Resource fleet",
+      "subtitle": "Groups, regions and capacity\nWorkers, clusters and Pods\nProbe, drain and disconnect\nSimulated group autoscaling",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/console/views.js"
+    },
+    {
+      "id": "execution",
+      "label": "Run orchestration",
+      "subtitle": "Queue and capacity admission\nRegional shards + start barrier\nLease, heartbeat and cancellation\nFrozen bundles + resource release",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "observe",
+      "label": "Monitoring & investigation",
+      "subtitle": "Request / latency / error series\nService, script and region views\nSamples, extraction, checks and logs\nWorker allocation and utilization",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_series.go"
+    },
+    {
+      "id": "quality",
+      "label": "Quality & reporting",
+      "subtitle": "Consecutive-window SLA rules\nProtection stops and notifications\nBaselines and report comparison\nJSON / CSV / print-to-PDF",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "automation",
+      "label": "Scheduling & recording",
+      "subtitle": "Once or cron with IANA timezones\nPinned scenario + occurrence history\nHAR import and managed capture\nConvert captured traffic to a test",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_scheduler.go"
+    },
+    {
+      "id": "operations",
+      "label": "Operations & governance",
+      "subtitle": "Audited virtual Pod terminal\nContacts, delivery inbox and retry\nPeople, tags and integrations\nEnglish / Chinese preferences",
+      "kind": "module",
+      "lifecycle": "existing",
+      "plane": "workspace",
+      "owner": "Go Workspace",
+      "evidence": "studio/workspace_policy.go"
+    }
+  ],
+  "flows": [],
+  "boundaries": [],
+  "constraints": [
+    "Nine implemented management domains, grouped by user task",
+    "Default infrastructure and network protocol traffic use managed simulation",
+    "Each organization is a separate workspace database; no cross-organization SaaS tenancy"
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "canvas": {
+    "width": 1480,
+    "height": 1110
+  },
+  "requiredLabels": [
+    "01  Sign in & choose project",
+    "02  Build a scenario",
+    "03  Validate & debug",
+    "04  Run or schedule",
+    "05  Freeze & queue",
+    "06  Reserve regional capacity",
+    "07  Prepare Pods & release",
+    "08  Execute worker contexts",
+    "09  Aggregate & inspect",
+    "10  Evaluate quality windows",
+    "11  Finalize & release",
+    "12  Review & share results"
+  ],
+  "styleRules": [
+    {
+      "label": "01  Sign in & choose project",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "02  Build a scenario",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "03  Validate & debug",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "04  Run or schedule",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "05  Freeze & queue",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "06  Reserve regional capacity",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "07  Prepare Pods & release",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "08  Execute worker contexts",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "09  Aggregate & inspect",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "10  Evaluate quality windows",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "11  Finalize & release",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "12  Review & share results",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    }
+  ],
+  "requiredRelations": [
+    {
+      "from": "01  Sign in & choose project",
+      "to": "02  Build a scenario"
+    },
+    {
+      "from": "02  Build a scenario",
+      "to": "03  Validate & debug"
+    },
+    {
+      "from": "03  Validate & debug",
+      "to": "04  Run or schedule"
+    },
+    {
+      "from": "04  Run or schedule",
+      "to": "05  Freeze & queue"
+    },
+    {
+      "from": "05  Freeze & queue",
+      "to": "06  Reserve regional capacity"
+    },
+    {
+      "from": "06  Reserve regional capacity",
+      "to": "07  Prepare Pods & release"
+    },
+    {
+      "from": "07  Prepare Pods & release",
+      "to": "08  Execute worker contexts"
+    },
+    {
+      "from": "08  Execute worker contexts",
+      "to": "09  Aggregate & inspect"
+    },
+    {
+      "from": "09  Aggregate & inspect",
+      "to": "10  Evaluate quality windows"
+    },
+    {
+      "from": "10  Evaluate quality windows",
+      "to": "11  Finalize & release"
+    },
+    {
+      "from": "11  Finalize & release",
+      "to": "12  Review & share results"
+    }
+  ],
+  "overlapSets": [
+    [
+      "01  Sign in & choose project",
+      "02  Build a scenario",
+      "03  Validate & debug",
+      "04  Run or schedule",
+      "05  Freeze & queue",
+      "06  Reserve regional capacity",
+      "07  Prepare Pods & release",
+      "08  Execute worker contexts",
+      "09  Aggregate & inspect",
+      "10  Evaluate quality windows",
+      "11  Finalize & release",
+      "12  Review & share results"
+    ]
+  ],
+  "requireBoundArrows": true
+}

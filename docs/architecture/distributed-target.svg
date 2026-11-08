@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1010" viewBox="0 0 1600 1010">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1600" height="1010" fill="#ffffff"/>
+<rect x="335" y="140" width="475" height="550" rx="12" fill="#f4fbf5" fill-opacity="0.68" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="905" y="140" width="325" height="550" rx="12" fill="#f4fbf5" fill-opacity="0.68" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="45" y="250" width="220" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="250" width="405" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="415" width="405" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="570" width="405" height="85" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="940" y="415" width="255" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1320" y="415" width="235" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="785" width="405" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="940" y="785" width="255" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="45" y="785" width="255" height="90" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="45" y="937" width="280" height="42" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<polyline points="265,295 370,295" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="570,340 570,415" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="775,460 940,460" fill="none" stroke="#868e96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7" marker-end="url(#arrow-gray)" opacity="1"/>
+<polyline points="1195,460 1320,460" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1065,505 1065,612 775,612" fill="none" stroke="#e67700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow-orange)" opacity="1"/>
+<polyline points="405,570 405,505" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="775,295 850,295 850,830 775,830" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1195,490 1260,490 1260,830 1195,830" fill="none" stroke="#868e96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7" marker-end="url(#arrow-gray)" opacity="1"/>
+<polyline points="370,612 173,612 173,785" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<text x="45" y="55" text-anchor="start" class="sans" font-size="30" fill="#1f2937">
+<tspan x="45" dy="0">PerfMan · Distributed target architecture</tspan>
+</text>
+<text x="46" y="90" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="46" dy="0">PROPOSAL · all green dashed modules are future work · this is not the delivered runtime</tspan>
+</text>
+<text x="353" y="176" text-anchor="start" class="sans" font-size="22" fill="#2f9e44">
+<tspan x="353" dy="0">Modular control plane</tspan>
+</text>
+<text x="353" y="198" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="353" dy="0">One service first · durable task state</tspan>
+</text>
+<text x="923" y="176" text-anchor="start" class="sans" font-size="22" fill="#2f9e44">
+<tspan x="923" dy="0">Execution plane</tspan>
+</text>
+<text x="923" y="198" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="923" dy="0">Scale workers, not business services</tspan>
+</text>
+<text x="155" y="276" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="155" dy="0">Web console / CI API</tspan>
+</text>
+<text x="155" y="297" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="155" dy="0">Browser / versioned API</tspan>
+</text>
+<text x="572.5" y="276" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="572.5" dy="0">Project / Scenario / Run</tspan>
+</text>
+<text x="572.5" y="297" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="572.5" dy="0">Immutable version + run snapshot</tspan>
+</text>
+<text x="572.5" y="441" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="572.5" dy="0">Scheduler / Lease</tspan>
+</text>
+<text x="572.5" y="462" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="572.5" dy="0">Lease / epoch / barrier / reconciliation</tspan>
+</text>
+<text x="572.5" y="596" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="572.5" dy="0">Metric ingestion / SLA</tspan>
+</text>
+<text x="572.5" y="617" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="572.5" dy="0">Dedup / watermark / partial verdict</tspan>
+</text>
+<text x="1067.5" y="441" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1067.5" dy="0">Worker agent / k6</tspan>
+</text>
+<text x="1067.5" y="462" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1067.5" dy="0">Short-lived container jobs</tspan>
+</text>
+<text x="1437.5" y="441" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1437.5" dy="0">Authorised target</tspan>
+</text>
+<text x="1437.5" y="462" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1437.5" dy="0">Egress policy / scoped credentials</tspan>
+</text>
+<text x="572.5" y="811" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="572.5" dy="0">PostgreSQL</tspan>
+</text>
+<text x="572.5" y="832" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="572.5" dy="0">Owns projects, snapshots, runs, shards</tspan>
+</text>
+<text x="1067.5" y="811" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1067.5" dy="0">Object storage</tspan>
+</text>
+<text x="1067.5" y="832" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1067.5" dy="0">Bundles / params / sampled logs</tspan>
+</text>
+<text x="172.5" y="811" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="172.5" dy="0">Metric storage</tspan>
+</text>
+<text x="172.5" y="832" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="172.5" dy="0">Mergeable buckets / retention</tspan>
+</text>
+<text x="267.5" y="277" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="267.5" dy="0">Create / debug / start</tspan>
+</text>
+<text x="590" y="377.5" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="590" dy="0">Transactional enqueue</tspan>
+</text>
+<text x="802.5" y="439" text-anchor="start" class="mono" font-size="12" fill="#868e96">
+<tspan x="802.5" dy="0">Claim / heartbeat</tspan>
+</text>
+<text x="1222.5" y="442" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="1222.5" dy="0">Load protocols</tspan>
+</text>
+<text x="820" y="636" text-anchor="start" class="mono" font-size="12" fill="#e67700">
+<tspan x="820" dy="0">Metrics: shard / epoch / seq</tspan>
+</text>
+<text x="423" y="539.5" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="423" dy="0">Stop on SLA</tspan>
+</text>
+<text x="860" y="554.5" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="860" dy="0">Persist versions / task state</tspan>
+</text>
+<text x="1275" y="642" text-anchor="start" class="mono" font-size="12" fill="#868e96">
+<tspan x="1275" dy="0">Fetch immutable bundle</tspan>
+</text>
+<text x="183" y="692.5" text-anchor="start" class="mono" font-size="12" fill="#2f9e44">
+<tspan x="183" dy="0">Merge buckets / persist</tspan>
+</text>
+<text x="940" y="263" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="940" dy="0">Explicit terminal run states.</tspan>
+<tspan x="940" dy="16.25">Missing shards yield partial results.</tspan>
+<tspan x="940" dy="16.25">Workers must use the current</tspan>
+<tspan x="940" dy="16.25">lease epoch to finish a shard.</tspan>
+</text>
+<text x="185" y="962.2" text-anchor="middle" class="sans" font-size="12" fill="#1f2937">
+<tspan x="185" dy="0">Green dashed = proposed component</tspan>
+</text>
+<text x="360" y="949" text-anchor="start" class="sans" font-size="12" fill="#64748b">
+<tspan x="360" dy="0">Green solid: internal call / persistence    Orange dashed: asynchronous metric batches</tspan>
+<tspan x="360" dy="15">Gray dotted: claim / heartbeat / artifact reads    All arrows name their transport or purpose</tspan>
+</text>
+</svg>

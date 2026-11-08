@@ -30,3 +30,7 @@ build/
 
 ### VS Code ###
 .vscode/
+# Local Go runtime and generated transient files
+studio/data/
+studio/perfman
+*.test

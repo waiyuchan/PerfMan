@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="820" viewBox="0 0 1450 820">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1450" height="820" fill="#ffffff"/>
+<rect x="355" y="135" width="1035" height="420" rx="12" fill="#f3f8ff" fill-opacity="0.68" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="265" width="220" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="265" width="250" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="745" y="265" width="240" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1080" y="265" width="260" height="100" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="435" width="250" height="80" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="405" y="630" width="320" height="85" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="755" width="255" height="40" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<polyline points="265,315 405,315" fill="none" stroke="#1971c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)" opacity="1"/>
+<polyline points="655,315 745,315" fill="none" stroke="#1971c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)" opacity="1"/>
+<polyline points="985,315 1080,315" fill="none" stroke="#1971c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)" opacity="1"/>
+<polyline points="530,365 530,435" fill="none" stroke="#1971c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7" marker-end="url(#arrow-blue)" opacity="1"/>
+<polyline points="405,345 325,345 325,672 405,672" fill="none" stroke="#1971c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)" opacity="1"/>
+<text x="45" y="55" text-anchor="start" class="sans" font-size="30" fill="#1f2937">
+<tspan x="45" dy="0">PerfMan Studio · Local runtime</tspan>
+</text>
+<text x="46" y="90" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="46" dy="0">Delivered implementation · no external database, registry or config server required</tspan>
+</text>
+<text x="373" y="171" text-anchor="start" class="sans" font-size="22" fill="#1971c2">
+<tspan x="373" dy="0">Single Go process</tspan>
+</text>
+<text x="373" y="193" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="373" dy="0">Logical modules share one process · Runner can be extracted later</tspan>
+</text>
+<text x="155" y="292" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="155" dy="0">Web console</tspan>
+</text>
+<text x="155" y="313" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="155" dy="0">HTML / CSS / JavaScript</tspan>
+</text>
+<text x="530" y="292" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="530" dy="0">Control modules</tspan>
+</text>
+<text x="530" y="313" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="530" dy="0">Projects · Scenarios · Runs</tspan>
+</text>
+<text x="865" y="292" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="865" dy="0">HTTP runner</tspan>
+</text>
+<text x="865" y="313" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="865" dy="0">VU stages · cancel · histogram</tspan>
+</text>
+<text x="1210" y="292" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="1210" dy="0">Demo target</tspan>
+</text>
+<text x="1210" y="313" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="1210" dy="0">Normal / bottleneck responses</tspan>
+</text>
+<text x="530" y="462" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="530" dy="0">Reports / k6 export</tspan>
+</text>
+<text x="530" y="483" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="530" dy="0">JSON · CSV · printable compare</tspan>
+</text>
+<text x="565" y="657" text-anchor="middle" class="sans" font-size="18" fill="#1f2937">
+<tspan x="565" dy="0">Atomic JSON state</tspan>
+</text>
+<text x="565" y="678" text-anchor="middle" class="mono" font-size="12" fill="#64748b">
+<tspan x="565" dy="0">data/state.json · final results</tspan>
+</text>
+<text x="273" y="295" text-anchor="start" class="mono" font-size="11" fill="#1971c2">
+<tspan x="273" dy="0">HTTP JSON + polling</tspan>
+</text>
+<text x="665" y="296" text-anchor="start" class="mono" font-size="11" fill="#1971c2">
+<tspan x="665" dy="0">Start / cancel</tspan>
+</text>
+<text x="1000.5" y="296" text-anchor="start" class="mono" font-size="11" fill="#1971c2">
+<tspan x="1000.5" dy="0">HTTP requests</tspan>
+</text>
+<text x="548" y="401" text-anchor="start" class="mono" font-size="11" fill="#1971c2">
+<tspan x="548" dy="0">Read snapshot / result</tspan>
+</text>
+<text x="85" y="531" text-anchor="start" class="sans" font-size="11" fill="#1971c2">
+<tspan x="85" dy="0">fsync + atomic rename</tspan>
+</text>
+<text x="800" y="445" text-anchor="start" class="sans" font-size="15" fill="#64748b">
+<tspan x="800" dy="0">Runner collects per-request histograms and 1s windows.</tspan>
+<tspan x="800" dy="18.75">SLA can cancel a run; completion and verdict are separate.</tspan>
+<tspan x="800" dy="18.75">Restarted active runs are marked interrupted.</tspan>
+</text>
+<text x="800" y="644" text-anchor="start" class="sans" font-size="14" fill="#64748b">
+<tspan x="800" dy="0">Local storage is a demo choice, not an HA database.</tspan>
+<tspan x="800" dy="17.5">Metrics persist at completion; a crash can lose active samples.</tspan>
+<tspan x="800" dy="17.5">Showcase hosting uses synthetic browser data only.</tspan>
+</text>
+<text x="172.5" y="779.2" text-anchor="middle" class="sans" font-size="12" fill="#1f2937">
+<tspan x="172.5" dy="0">Blue solid = verified implementation</tspan>
+</text>
+<text x="350" y="772" text-anchor="start" class="sans" font-size="12" fill="#64748b">
+<tspan x="350" dy="0">Solid blue arrow: execution / persistence   ·   Dotted blue arrow: read-only projection</tspan>
+</text>
+</svg>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1490" height="1090" viewBox="0 0 1490 1090">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1490" height="1090" fill="#ffffff"/>
+<rect x="45" y="215" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="525" y="215" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1005" y="215" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="460" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="525" y="460" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1005" y="460" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="45" y="705" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="525" y="705" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<rect x="1005" y="705" width="440" height="205" rx="12" fill="#e7f5ff" fill-opacity="1" stroke="#1971c2" stroke-width="2"/>
+<text x="45" y="58" text-anchor="start" class="sans" font-size="32" fill="#1f2937">
+<tspan x="45" dy="0">PerfMan · Product capability map</tspan>
+</text>
+<text x="47" y="104" text-anchor="start" class="sans" font-size="16" fill="#64748b">
+<tspan x="47" dy="0">DESIGN VIEW · Author tests, coordinate resources, investigate results and operate the workspace</tspan>
+</text>
+<text x="47" y="160" text-anchor="start" class="sans" font-size="15" fill="#1f2937">
+<tspan x="47" dy="0">Administrator: workspace + access  ·  Engineer: author + run  ·  Operator: fleet + terminal  ·  Viewer: review</tspan>
+</text>
+<text x="265" y="245" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="265" dy="0">Workspace &amp; access</tspan>
+</text>
+<text x="265" y="266" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="265" dy="0">Projects and membership</tspan>
+<tspan x="265" dy="17.4">Admin / Engineer / Operator / Viewer</tspan>
+<tspan x="265" dy="17.4">Project + tag policies</tspan>
+<tspan x="265" dy="17.4">Session and audit history</tspan>
+</text>
+<text x="745" y="245" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="745" dy="0">Scenario authoring</tspan>
+</text>
+<text x="745" y="266" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="745" dy="0">Simple request journeys</tspan>
+<tspan x="745" dy="17.4">JavaScript modules + lifecycle</tspan>
+<tspan x="745" dy="17.4">JMX plans + thread groups</tspan>
+<tspan x="745" dy="17.4">VU / RPS / ramp / spike profiles</tspan>
+</text>
+<text x="1225" y="245" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="1225" dy="0">Data &amp; configuration</tspan>
+</text>
+<text x="1225" y="266" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="1225" dy="0">CSV parameters and partitions</tspan>
+<tspan x="1225" dy="17.4">Environment variables + secrets</tspan>
+<tspan x="1225" dy="17.4">Protocol bundles and script modules</tspan>
+<tspan x="1225" dy="17.4">JMX and plugin dependencies</tspan>
+</text>
+<text x="265" y="490" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="265" dy="0">Resource fleet</tspan>
+</text>
+<text x="265" y="511" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="265" dy="0">Groups, regions and capacity</tspan>
+<tspan x="265" dy="17.4">Workers, clusters and Pods</tspan>
+<tspan x="265" dy="17.4">Probe, drain and disconnect</tspan>
+<tspan x="265" dy="17.4">Simulated group autoscaling</tspan>
+</text>
+<text x="745" y="490" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="745" dy="0">Run orchestration</tspan>
+</text>
+<text x="745" y="511" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="745" dy="0">Queue and capacity admission</tspan>
+<tspan x="745" dy="17.4">Regional shards + start barrier</tspan>
+<tspan x="745" dy="17.4">Lease, heartbeat and cancellation</tspan>
+<tspan x="745" dy="17.4">Frozen bundles + resource release</tspan>
+</text>
+<text x="1225" y="490" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="1225" dy="0">Monitoring &amp; investigation</tspan>
+</text>
+<text x="1225" y="511" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="1225" dy="0">Request / latency / error series</tspan>
+<tspan x="1225" dy="17.4">Service, script and region views</tspan>
+<tspan x="1225" dy="17.4">Samples, extraction, checks and logs</tspan>
+<tspan x="1225" dy="17.4">Worker allocation and utilization</tspan>
+</text>
+<text x="265" y="735" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="265" dy="0">Quality &amp; reporting</tspan>
+</text>
+<text x="265" y="756" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="265" dy="0">Consecutive-window SLA rules</tspan>
+<tspan x="265" dy="17.4">Protection stops and notifications</tspan>
+<tspan x="265" dy="17.4">Baselines and report comparison</tspan>
+<tspan x="265" dy="17.4">JSON / CSV / print-to-PDF</tspan>
+</text>
+<text x="745" y="735" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="745" dy="0">Scheduling &amp; recording</tspan>
+</text>
+<text x="745" y="756" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="745" dy="0">Once or cron with IANA timezones</tspan>
+<tspan x="745" dy="17.4">Pinned scenario + occurrence history</tspan>
+<tspan x="745" dy="17.4">HAR import and managed capture</tspan>
+<tspan x="745" dy="17.4">Convert captured traffic to a test</tspan>
+</text>
+<text x="1225" y="735" text-anchor="middle" class="sans" font-size="21" fill="#1f2937">
+<tspan x="1225" dy="0">Operations &amp; governance</tspan>
+</text>
+<text x="1225" y="756" text-anchor="middle" class="mono" font-size="15" fill="#64748b">
+<tspan x="1225" dy="0">Audited virtual Pod terminal</tspan>
+<tspan x="1225" dy="17.4">Contacts, delivery inbox and retry</tspan>
+<tspan x="1225" dy="17.4">People, tags and integrations</tspan>
+<tspan x="1225" dy="17.4">English / Chinese preferences</tspan>
+</text>
+<text x="47" y="1000" text-anchor="start" class="sans" font-size="15" fill="#64748b">
+<tspan x="47" dy="0">Blue solid cards = implemented product domains. This is a functional grouping, not a deployment diagram.</tspan>
+<tspan x="47" dy="18.75">Execution boundary: managed workers / Pods / terminal and protocol fixtures; native HTTP measures the bundled local target.</tspan>
+</text>
+</svg>

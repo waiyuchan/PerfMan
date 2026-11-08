@@ -1,0 +1,116 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1010
+  },
+  "requiredLabels": [
+    "Web console / CI API",
+    "Project / Scenario / Run",
+    "Scheduler / Lease",
+    "Metric ingestion / SLA",
+    "Worker agent / k6",
+    "Authorised target",
+    "PostgreSQL",
+    "Object storage",
+    "Metric storage"
+  ],
+  "styleRules": [
+    {
+      "label": "Web console / CI API",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Project / Scenario / Run",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Scheduler / Lease",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Metric ingestion / SLA",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Worker agent / k6",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Authorised target",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "PostgreSQL",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Object storage",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    },
+    {
+      "label": "Metric storage",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "dashed"
+    }
+  ],
+  "requiredRelations": [
+    {
+      "from": "Web console / CI API",
+      "to": "Project / Scenario / Run"
+    },
+    {
+      "from": "Project / Scenario / Run",
+      "to": "Scheduler / Lease"
+    },
+    {
+      "from": "Scheduler / Lease",
+      "to": "Worker agent / k6"
+    },
+    {
+      "from": "Worker agent / k6",
+      "to": "Authorised target"
+    },
+    {
+      "from": "Worker agent / k6",
+      "to": "Metric ingestion / SLA"
+    },
+    {
+      "from": "Project / Scenario / Run",
+      "to": "PostgreSQL"
+    },
+    {
+      "from": "Worker agent / k6",
+      "to": "Object storage"
+    },
+    {
+      "from": "Metric ingestion / SLA",
+      "to": "Metric storage"
+    },
+    {
+      "from": "Metric ingestion / SLA",
+      "to": "Scheduler / Lease"
+    }
+  ],
+  "overlapSets": [
+    [
+      "Web console / CI API",
+      "Project / Scenario / Run",
+      "Scheduler / Lease",
+      "Metric ingestion / SLA",
+      "Worker agent / k6",
+      "Authorised target",
+      "PostgreSQL",
+      "Object storage",
+      "Metric storage"
+    ]
+  ],
+  "requireBoundArrows": true
+}

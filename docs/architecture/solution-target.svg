@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1620" height="1230" viewBox="0 0 1620 1230">
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f2937"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1971c2"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f9e44"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e67700"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#868e96"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c92a2a"/></marker>
+<style>.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace}</style>
+</defs><rect width="1620" height="1230" fill="#ffffff"/>
+<rect x="330" y="150" width="610" height="750" rx="12" fill="#f4fbf5" fill-opacity="0.68" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1030" y="150" width="540" height="750" rx="12" fill="#f4fbf5" fill-opacity="0.68" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="35" y="290" width="220" height="100" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="250" width="240" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="650" y="250" width="250" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="430" width="530" height="100" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="655" width="240" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="650" y="655" width="250" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1070" y="250" width="460" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1070" y="465" width="460" height="100" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1070" y="690" width="215" height="100" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="1315" y="690" width="215" height="100" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="370" y="995" width="280" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="720" y="995" width="280" height="95" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="40" y="1145" width="300" height="45" rx="12" fill="#ebfbee" fill-opacity="1" stroke="#2f9e44" stroke-width="2" stroke-dasharray="10 7"/>
+<polyline points="255,340 295,340 295,297 370,297" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="490,345 490,430" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="775,345 775,430" fill="none" stroke="#868e96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7" marker-end="url(#arrow-gray)" opacity="1"/>
+<polyline points="900,480 985,480 985,297 1070,297" fill="none" stroke="#e67700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow-orange)" opacity="1"/>
+<polyline points="1300,345 1300,465" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="900,510 995,510 995,850 1177,850 1177,790" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1422,565 1422,690" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="1070,320 1010,320 1010,610 490,610 490,655" fill="none" stroke="#e67700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow-orange)" opacity="1"/>
+<polyline points="610,702 650,702" fill="none" stroke="#e67700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow-orange)" opacity="1"/>
+<polyline points="370,510 310,510 310,1042 370,1042" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<polyline points="900,297 1018,297 1018,1042 1000,1042" fill="none" stroke="#2f9e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)" opacity="1"/>
+<text x="40" y="55" text-anchor="start" class="sans" font-size="30" fill="#1f2937">
+<tspan x="40" dy="0">PerfMan Go · Complete solution design</tspan>
+</text>
+<text x="42" y="94" text-anchor="start" class="sans" font-size="14" fill="#64748b">
+<tspan x="42" dy="0">PROPOSAL · Expanded scope after PTS feature review · all green dashed modules are planned</tspan>
+</text>
+<text x="348" y="186" text-anchor="start" class="sans" font-size="22" fill="#2f9e44">
+<tspan x="348" dy="0">Go control plane</tspan>
+</text>
+<text x="348" y="208" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="348" dy="0">One modular service first / server-owned durable workflow</tspan>
+</text>
+<text x="1048" y="186" text-anchor="start" class="sans" font-size="22" fill="#2f9e44">
+<tspan x="1048" dy="0">Execution + provider plane</tspan>
+</text>
+<text x="1048" y="208" text-anchor="start" class="mono" font-size="11" fill="#64748b">
+<tspan x="1048" dy="0">Bounded simulator first / replaceable real adapters</tspan>
+</text>
+<text x="145" y="316" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="145" dy="0">Bilingual web console</tspan>
+</text>
+<text x="145" y="337" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="145" dy="0">Login / Author / Run / Operate</tspan>
+</text>
+<text x="490" y="276" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="490" dy="0">Identity + policy</tspan>
+</text>
+<text x="490" y="297" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="490" dy="0">Sessions / roles / project + tag scope</tspan>
+</text>
+<text x="775" y="276" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="775" dy="0">Projects + assets</tspan>
+</text>
+<text x="775" y="297" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="775" dy="0">Environments / files / recordings</tspan>
+</text>
+<text x="635" y="456" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="635" dy="0">Run + resource scheduler</tspan>
+</text>
+<text x="635" y="477" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="635" dy="0">Snapshots / queue / lease / capacity / plans</tspan>
+</text>
+<text x="490" y="681" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="490" dy="0">Metrics + reports</tspan>
+</text>
+<text x="490" y="702" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="490" dy="0">Histograms / checks / samples / views</tspan>
+</text>
+<text x="775" y="681" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="775" dy="0">Operations gateway</tspan>
+</text>
+<text x="775" y="702" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="775" dy="0">SLA / notifications / terminal / audit</tspan>
+</text>
+<text x="1300" y="276" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1300" dy="0">Go agent</tspan>
+</text>
+<text x="1300" y="297" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1300" dy="0">Claim / heartbeat / isolate / stop</tspan>
+</text>
+<text x="1300" y="491" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1300" dy="0">Engine adapters</tspan>
+</text>
+<text x="1300" y="512" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1300" dy="0">Script / HTTP / protocols / JMeter</tspan>
+</text>
+<text x="1177.5" y="716" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1177.5" dy="0">Resource providers</tspan>
+</text>
+<text x="1177.5" y="737" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1177.5" dy="0">Simulator / Agent / Docker / K8s</tspan>
+</text>
+<text x="1422.5" y="716" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="1422.5" dy="0">Target transports</tspan>
+</text>
+<text x="1422.5" y="737" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="1422.5" dy="0">Fixtures or authorised endpoints</tspan>
+</text>
+<text x="510" y="1021" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="510" dy="0">Metadata store</tspan>
+</text>
+<text x="510" y="1042" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="510" dy="0">SQLite first / PostgreSQL scale-out</tspan>
+</text>
+<text x="860" y="1021" text-anchor="middle" class="sans" font-size="17" fill="#1f2937">
+<tspan x="860" dy="0">Versioned artifact store</tspan>
+</text>
+<text x="860" y="1042" text-anchor="middle" class="mono" font-size="11" fill="#64748b">
+<tspan x="860" dy="0">Local content-addressed / object storage</tspan>
+</text>
+<text x="45" y="236" text-anchor="start" class="sans" font-size="11" fill="#2f9e44">
+<tspan x="45" dy="0">HTTP / session / policy</tspan>
+</text>
+<text x="505" y="393.5" text-anchor="start" class="mono" font-size="11" fill="#2f9e44">
+<tspan x="505" dy="0">Authorise actions</tspan>
+</text>
+<text x="790" y="393.5" text-anchor="start" class="mono" font-size="11" fill="#868e96">
+<tspan x="790" dy="0">Freeze bundle</tspan>
+</text>
+<text x="895" y="394.5" text-anchor="start" class="mono" font-size="11" fill="#e67700">
+<tspan x="895" dy="0">Assignment / epoch / cancel</tspan>
+</text>
+<text x="1315" y="411" text-anchor="start" class="mono" font-size="11" fill="#2f9e44">
+<tspan x="1315" dy="0">Start / update / collect</tspan>
+</text>
+<text x="1050" y="826" text-anchor="start" class="sans" font-size="11" fill="#2f9e44">
+<tspan x="1050" dy="0">Provision / observe / release resources</tspan>
+</text>
+<text x="1437" y="621" text-anchor="start" class="sans" font-size="11" fill="#2f9e44">
+<tspan x="1437" dy="0">Invoke protocols</tspan>
+</text>
+<text x="642" y="593" text-anchor="start" class="mono" font-size="11" fill="#e67700">
+<tspan x="642" dy="0">Metric batch / log / sample</tspan>
+</text>
+<text x="615" y="776" text-anchor="start" class="sans" font-size="11" fill="#64748b">
+<tspan x="615" dy="0">SLA / report events → operations</tspan>
+<tspan x="615" dy="13.75">Notifications + terminal sessions audited</tspan>
+</text>
+<text x="45" y="817" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="45" dy="0">Task state + outbox</tspan>
+<tspan x="45" dy="15">transactional persistence</tspan>
+</text>
+<text x="1060" y="952" text-anchor="start" class="sans" font-size="12" fill="#2f9e44">
+<tspan x="1060" dy="0">Versioned content / immutable file hashes</tspan>
+</text>
+<text x="1070" y="1008" text-anchor="start" class="sans" font-size="13" fill="#64748b">
+<tspan x="1070" dy="0">Simulator: persistent pods, leases and virtual terminal.</tspan>
+<tspan x="1070" dy="16.25">Real adapters: agents, Docker, Kubernetes, SSH.</tspan>
+<tspan x="1070" dy="16.25">Metrics retain measured / simulated provenance.</tspan>
+<tspan x="1070" dy="16.25">JMeter keeps its JVM; orchestration is Go.</tspan>
+</text>
+<text x="190" y="1171.7" text-anchor="middle" class="sans" font-size="12" fill="#1f2937">
+<tspan x="190" dy="0">Green dashed = proposed component</tspan>
+</text>
+<text x="380" y="1157" text-anchor="start" class="sans" font-size="12" fill="#64748b">
+<tspan x="380" dy="0">Green solid: call / persistence    Orange dashed: asynchronous handoff / events</tspan>
+<tspan x="380" dy="15">Gray dotted: read-only snapshot lookup    This design supersedes the earlier HTTP-only target scope.</tspan>
+</text>
+</svg>

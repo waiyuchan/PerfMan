@@ -1,0 +1,123 @@
+{
+  "canvas": {
+    "width": 1530,
+    "height": 1090
+  },
+  "requiredLabels": [
+    "Bilingual console",
+    "API + authorization",
+    "Run + resource scheduler",
+    "Managed worker contexts",
+    "Protocol + JMX engines",
+    "Metrics + reports",
+    "Operations + SLA",
+    "Workspace SQLite",
+    "Environment encryption key",
+    "Bundled HTTP target"
+  ],
+  "styleRules": [
+    {
+      "label": "Bilingual console",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "API + authorization",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Run + resource scheduler",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Managed worker contexts",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Protocol + JMX engines",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Metrics + reports",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Operations + SLA",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Workspace SQLite",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Environment encryption key",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Bundled HTTP target",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    }
+  ],
+  "requiredRelations": [
+    {
+      "from": "Bilingual console",
+      "to": "API + authorization"
+    },
+    {
+      "from": "API + authorization",
+      "to": "Run + resource scheduler"
+    },
+    {
+      "from": "Run + resource scheduler",
+      "to": "Managed worker contexts"
+    },
+    {
+      "from": "Managed worker contexts",
+      "to": "Protocol + JMX engines"
+    },
+    {
+      "from": "Managed worker contexts",
+      "to": "Metrics + reports"
+    },
+    {
+      "from": "Metrics + reports",
+      "to": "Operations + SLA"
+    },
+    {
+      "from": "Run + resource scheduler",
+      "to": "Workspace SQLite"
+    },
+    {
+      "from": "Environment encryption key",
+      "to": "Workspace SQLite"
+    },
+    {
+      "from": "Protocol + JMX engines",
+      "to": "Bundled HTTP target"
+    }
+  ],
+  "overlapSets": [
+    [
+      "Bilingual console",
+      "API + authorization",
+      "Run + resource scheduler",
+      "Managed worker contexts",
+      "Protocol + JMX engines",
+      "Metrics + reports",
+      "Operations + SLA",
+      "Workspace SQLite",
+      "Environment encryption key",
+      "Bundled HTTP target"
+    ]
+  ],
+  "requireBoundArrows": true
+}

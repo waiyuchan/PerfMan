@@ -1,581 +1,159 @@
-<div align="center">
-    <img src="resources/img/logo_with_name.png" height="100px"/>
-    <h1>PerfMan: Performance Testing Management Platform</h1>
-</div>
+# PerfMan
 
-<div align="center">
-    <img src="https://img.shields.io/badge/Language-Java-orange.svg" />
-    <img src="https://img.shields.io/badge/ORM-MyBatis-blue.svg" />
-    <img src="https://img.shields.io/badge/Architecture-Spring Cloud-6db33f.svg" />
-</div>
+PerfMan is an open-source performance testing workspace with a Go backend and a bilingual web console. Build user journeys, coordinate regional workers, inspect performance and make release decisions in one managed workflow.
 
-<h4 align="center">
-    <a href="README.zh.md">中文</a> | English
-</h4>
+English · [简体中文](README.zh.md)
 
-PerfMan is an open-source, comprehensive performance testing management platform designed for modern cloud applications.
-It
-provides a suite of tools for managing environments, projects, testing scenarios, tasks, and notifications, all built on
-a microservices architecture leveraging Spring Cloud.
+[Quick start](#quick-start) · [Capabilities](#what-you-can-try) · [Workflow](#business-workflow) · [Architecture](#architecture) · [Screenshots](#product-showcase) · [Documentation](docs/README.md)
 
-## Features
+## Quick start
 
-- **Service Discovery**: Centralized service registry and discovery using Eureka.
-- **API Gateway**: Unified entry point for microservices using Spring Cloud Gateway.
-- **Configuration Management**: Centralized configuration management with Spring Cloud Config.
-- **Identity and Access Management**: User registration, authentication, and authorization.
-- **Notification Service**: In-app and email notifications.
-- **Environment and Resource Management**: Manage nodes, clusters, and monitor resources.
-- **Project Management**: Project creation, member management, and search functionalities.
-- **Test Management**: Create, manage, and execute testing scenarios and tasks.
-- **Alerting Service**: Configurable alert rules and notification settings.
+Install Go 1.26+ and a C compiler for SQLite (`clang` on macOS or `gcc` on Linux). From the repository root:
 
-## Getting Started
-
-### Prerequisites
-
-- JDK 8 or later
-- Maven 3.8 or later
-
-### Installation
-
-Clone the PerfMan repository:
-
-```bash
-git clone https://github.com/waiyuchan/PerfMan.git
-cd perfman
+```sh
+cd studio
+go run ./cmd/perfman
 ```
 
-Build the project with Maven:
+Open [http://127.0.0.1:8099](http://127.0.0.1:8099). Sign in as **`alex.morgan@acme.io`** with **`PerfMan2026!`**. The console defaults to English; switch to 简体中文 in the top bar. Java, an external database and a frontend build step are not required for the Go workspace.
 
-```bash
-mvn clean install
+The first launch creates Acme Engineering with three projects, three resource groups, eighteen managed workers, twelve scenarios, environments, parameter files and eighteen historical runs. The sample accounts and business records are synthetic. Saved changes survive restarts.
+
+| Account | Role | Starting point |
+| --- | --- | --- |
+| `alex.morgan@acme.io` | Administrator | Projects, people, policies and the complete workspace |
+| `jamie.taylor@acme.io` | Engineer | Author scenarios, debug, run and inspect results |
+| `riley.chen@acme.io` | Operator | Resource groups, workers, Pods and terminal sessions |
+| `casey.lee@acme.io` | Viewer | Authorized Commerce scenarios, runs and reports |
+
+All four fixture accounts share the initial password. Set `PERFMAN_INITIAL_PASSWORD` before initializing a new database to choose another password. Changing it later does not reset existing users. Each database is one organization workspace; cross-organization SaaS tenancy and billing are outside the current implementation.
+
+## What you can try
+
+| Workflow | Capabilities |
+| --- | --- |
+| Author realistic tests | Simple chained requests, executable JavaScript entries or a supported JMX plan. Configure headers, bodies, extraction, checks, think time and load profiles. |
+| Reuse test assets | Bind CSV parameters, protocol bundles, request files, JavaScript modules and environment variables. Split CSV rows across workers and mask stored secrets. |
+| Cover protocols | HTTP, gRPC, Protobuf, WebSocket, Socket.IO, SQL, Redis, TCP and UDP managed fixtures. SQL and Redis operations affect subsequent calls in their context. |
+| Coordinate resources | Resource groups, regional traffic weights, node capacity, queued admission, group concurrency, simulated autoscaling, Pods and readiness barriers. |
+| Investigate a run | Live series, service/script/region dimensions, custom metric charts, checks, logs, request samples and immutable scenario snapshots. |
+| Apply quality gates | Consecutive-window SLA rules, independent protection/notification actions, alert history, acknowledgement and notification delivery records. |
+| Automate and reuse traffic | Once/cron schedules with IANA timezones and occurrence history; HAR import, managed capture and recording-to-scenario conversion. |
+| Review and operate | Baseline comparison, JSON/CSV export, print-to-PDF, resource probe/drain/disconnect, audited virtual terminals, project/tag policies and audit history. |
+
+### Functional design
+
+![PerfMan's nine product domains: access, authoring, configuration, resources, orchestration, monitoring, quality, automation and operations](docs/design/feature-map.svg)
+
+[PNG](docs/design/feature-map.png) · [Editable Excalidraw](docs/design/feature-map.excalidraw) · [Design and source evidence](docs/design/README.md)
+
+## Business workflow
+
+1. Sign in, select a project and prepare its environment and files.
+2. Build a simple, JavaScript or JMeter scenario; add checks, extraction, load distribution and SLA rules.
+3. Validate and debug, then start a run or create a timezone-aware schedule.
+4. Follow admission, capacity reservation, Pod readiness and execution. Inspect metrics and samples, adjust an RPS run or stop it.
+5. Review the quality verdict, investigate alerts and compare or export the finalized report. Reserved capacity returns to the group.
+
+![Twelve-step business flow from sign-in and test authoring through regional scheduling, execution, quality evaluation and reports](docs/design/business-flow.svg)
+
+[PNG](docs/design/business-flow.png) · [Editable Excalidraw](docs/design/business-flow.excalidraw) · [Run lifecycle and failure paths](docs/design/README.md#run-lifecycle)
+
+Insufficient capacity stays queued. Duration, cancellation, SLA protection and engine failure lead to finalization; a lost worker yields a partial, inconclusive result. A controller restart interrupts unfinished runs and releases their allocations.
+
+## Architecture
+
+![Implemented runtime: a bilingual browser console calls one Go process containing API authorization, scheduling, managed worker contexts, engines, reporting and operations, backed by SQLite and a separate encryption key](docs/architecture/saas-runtime.svg)
+
+[PNG](docs/architecture/saas-runtime.png) · [Editable Excalidraw](docs/architecture/saas-runtime.excalidraw) · [Evidence model](docs/architecture/saas-runtime-model.json)
+
+| Layer | Implementation |
+| --- | --- |
+| Web console | Responsive HTML, CSS and JavaScript modules in [`studio/console/`](studio/console/), embedded in the Go binary and served without a frontend build. |
+| API and access | [`workspace.go`](studio/workspace.go) handles the same-origin JSON API, cookie sessions, bcrypt passwords, project membership, validation and optimistic versions. [`workspace_policy.go`](studio/workspace_policy.go) refines access by project, tag and action. |
+| Orchestration | [`workspace_scheduler.go`](studio/workspace_scheduler.go) owns schedules, queued admission, regional capacity, shards, readiness, cancellation, quality windows and release. |
+| Execution | [`workspace_engine.go`](studio/workspace_engine.go) runs checks, extraction and Goja JavaScript contexts; [`workspace_jmeter.go`](studio/workspace_jmeter.go) compiles supported JMX samplers. [`workspace_protocols.go`](studio/workspace_protocols.go) supplies stateful fixtures. |
+| Collection and reports | [`workspace_series.go`](studio/workspace_series.go) combines worker samples into series and integer budgets. [`workspace_metrics.go`](studio/workspace_metrics.go) exports scoped metrics. Histogram buckets are merged before computing quantiles. |
+| Persistence | SQLite WAL stores workspace entities, sessions and frozen run bundles. Environment secrets use AES-GCM with a separate `workspace.key`. Files currently live in entity payloads. |
+
+The application is a modular monolith with a single controller and one SQLite database. This keeps the complete workflow reproducible on a laptop. Real distributed deployment requires authenticated external agents, durable metric ingestion, a replicated storage design and production provider adapters. The [future target proposal](docs/architecture/solution-target.svg) is kept separate from the implemented runtime above.
+
+## Product showcase
+
+These are real application screenshots with synthetic workspace data. Select a board to view it at full resolution.
+
+| Scenario authoring | Distributed execution and resources |
+| --- | --- |
+| [![Sign-in, chained HTTP requests, JavaScript and JMeter editors](docs/showcase/01-authoring.png)](docs/showcase/01-authoring.png) | [![Run overview, regional shards, resource groups and monitoring](docs/showcase/02-execution.png)](docs/showcase/02-execution.png) |
+| **Quality gates and investigation** | **Workspace operations** |
+| [![Baseline comparison, metric analysis, SLA rules and alert investigation](docs/showcase/03-quality.png)](docs/showcase/03-quality.png) | [![Environment configuration, schedules, people and audited Pod terminal](docs/showcase/04-operations.png)](docs/showcase/04-operations.png) |
+
+[Individual screens and capture notes](docs/showcase/README.md) · [Chinese console](docs/showcase/screens/chinese-resources.png) · [Mobile view](docs/showcase/screens/mobile-overview.png)
+
+## Execution boundaries
+
+The default provider models workers and Pods **inside one Go process**. Each allocated worker evaluates bounded representative samples; metrics scale to the requested logical load. Logical VU/RPS values are simulation results and do not measure hardware load-generator capacity.
+
+| Provider area | Current behavior |
+| --- | --- |
+| Native HTTP | Real requests to the bundled loopback target, with measured total timing. It does not send to arbitrary external targets. |
+| Network protocols | Managed fixtures for gRPC, WebSocket, Socket.IO, Redis, TCP/UDP and Protobuf. The Protobuf codec is a JSON round trip, not wire-compatible encoding. |
+| Stateful data | SQL runs actual statements in a per-context in-memory SQLite dataset, with host database attachment blocked. Redis and socket fixtures maintain virtual state. |
+| JMeter | Supported HTTP/TCP/WebSocket sampler plans, thread groups, loops, CSV bindings, throughput caps and assertions. No JVM, BeanShell/JSR223 or uploaded plugin code is executed. |
+| Infrastructure and operations | Resource probes, clusters, Pods and terminals are backend-owned simulations. No Kubernetes API, SSH daemon or host shell is invoked. |
+| Notifications and capture | The workspace inbox is functional; external email/webhook channels are simulated. Managed recording captures the bundled target; HAR import accepts supplied traffic. |
+
+See the [implementation matrix](docs/product/IMPLEMENTATION.md) for exact behavior, limits and extension points. The management flow is implemented; external execution integrations should be added before advertising production cloud-load capabilities.
+
+## Configuration and storage
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `PERFMAN_ADDR` | `127.0.0.1:8099` | Listen address |
+| `PERFMAN_DATA` | `data/workspace.db` | SQLite database path, relative to the working directory |
+| `PERFMAN_INITIAL_PASSWORD` | `PerfMan2026!` | Initial fixture-account password for new databases only |
+
+Back up SQLite using its backup API, or stop the service before copying the entire data directory. Keep `workspace.key` with the database: losing it prevents decryption of environment secrets. Copying only a live `.db` file can omit WAL changes. Runtime databases and keys are excluded from Git.
+
+The [companion configuration repository](https://github.com/waiyuchan/perfman-config-repo) retains the former Spring configuration. The Go process uses environment variables; projects, environments, assets and policies are versioned workspace entities. The companion checkout includes a Go environment example and migration notes.
+
+## Docker
+
+From the repository root:
+
+```sh
+docker compose up --build
 ```
 
-## Configuration Center Update Guide
+Open [http://127.0.0.1:8099](http://127.0.0.1:8099). The container runs as a non-root user and persists `/var/lib/perfman` in `perfman-data`. Compose passes `PERFMAN_INITIAL_PASSWORD` from the environment. The Docker configuration has not been run in the current validation environment because its Docker daemon is unavailable; native Go startup has been verified.
 
-### Introduction
+## Development and validation
 
-This guide describes how to update the configuration center configuration of the PerfMan project by updating the
-configuration files in the Git repository. The configuration center uses Spring Cloud Config Server to pull
-configuration files from the Git repository and provide them to each microservice.
+From the repository root:
 
-### Steps
-
-#### 1. Clone the configuration repository
-
-First, clone the configuration repository to your local machine:
-
-```bash
-git clone https://github.com/waiyuchan/perfman-config-repo.git
-cd perfman-config-repo
+```sh
+(cd studio && go test -race ./...)
+(cd studio && go vet ./...)
+node scripts/docs/check-docs.mjs
 ```
 
-### 2. Update the configuration file
+The current suite contains 23 top-level Go tests, including protocol scenario subtests and the earlier HTTP-engine tests. It covers authorization, snapshots, secrets, script limits, stateful fixtures, regional allocation, counter conservation, SLA, worker loss, terminal audit, schedules and persistence. See the [verification record](docs/product/VALIDATION.md) for observed browser workflows and untested external integrations.
 
-In the cloned repository, find the configuration file that needs to be updated, such as `application.yml` or the
-configuration file for a specific service (such as `perfman-project-service.yml`).
+Diagram generators, editable sources, contracts and screenshot layouts are included. [Documentation maintenance](scripts/docs/README.md) explains regeneration and asset validation.
 
-#### Operation example:
+## Documentation and project history
 
-Update `application.yml` file:
+| Document | Purpose |
+| --- | --- |
+| [Documentation index](docs/README.md) | Architecture, product, API, visuals and research |
+| [Product and workflow design](docs/design/README.md) | Functional map, business flow and lifecycle |
+| [Implementation matrix](docs/product/IMPLEMENTATION.md) | Implemented behavior and provider boundaries |
+| [Workspace API](docs/product/API.md) | Authoring, execution, operations and metrics endpoints |
+| [Screenshot gallery](docs/showcase/README.md) | Individual screens, boards and capture provenance |
+| [PTS feature review](docs/research/PTS_REVIEW_2026-11-08.zh.md) | Reference research across 53 official documentation pages |
 
-```yaml
-# application.yml
-spring:
-  application:
-    name: perfman-config-service
-    # Add or modify configuration items
-    new-property: newValue
-```
-
-Update `perfman-project-service.yml` file:
-
-```yaml
-# perfman-project-service.yml
-project:
-  setting1: newValue1
-  setting2: newValue2
-```
-
-### 3. Commit and push changes
-
-Commit the changes to the Git repository:
-
-```bash
-git add .
-git commit -m "Update configuration for perfman-project-service"
-git push origin master
-```
-
-### 4. Refresh configuration
-
-In order for the changes to take effect, you need to notify the configuration center to refresh the configuration. This
-can be achieved in the following two ways:
-
-#### Method 1: Refresh using Spring Boot Actuator endpoint
-
-If the client application has Spring Boot Actuator enabled, you can access the `/actuator/refresh` endpoint to refresh
-the configuration.
-
-```bash
-curl -X POST http://localhost:8080/actuator/refresh
-```
-
-#### Method 2: Manually restart the client application
-
-Manually restart the client application that needs to update the configuration so that it can pull the latest
-configuration from the configuration center again.
-
-### Frequently Asked Questions
-
-#### Problem 1: Configuration does not take effect
-
-Make sure that the changes have been pushed to the Git repository and the client application has been refreshed or
-restarted.
-
-#### Problem 2: Configuration pull failed
-
-Check whether the Git repository configuration in the `application.yml` file in the configuration center is correct:
-
-```yaml
-spring:
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/waiyuchan/perfman-config-repo
-          search-paths: config-repo
-          clone-on-start: true
-```
-
-Make sure the URL of the Git repository is correct and the repository contains the required configuration files.
-
-## New service registration and discovery based on Eureka
-
-### Steps
-
-#### 1. Add Eureka Client dependency
-
-Add Spring Cloud Netflix Eureka Client dependency in the service's `pom.xml` file:
-
-```xml
-
-<dependencies>
-    <!-- Other dependencies -->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-</dependencies>
-```
-
-#### 2. Configure `application.yml`
-
-Add Eureka client configuration in the service's `src/main/resources/application.yml` file:
-
-```yaml
-spring:
-  application:
-    name: <service-name>  # 替换为具体服务名称
-
-  cloud:
-    config:
-      uri: http://localhost:8888  # Config Server的地址
-      name: <service-name>  # 替换为具体服务名称
-      profile: default
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-```
-
-#### 3. Enable Eureka client
-
-Enable Eureka client in the main class file of the service. Assume the main class file
-is `PerfmanServiceApplication.java`:
-
-```java
-package com.perfman.service;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
-@SpringBootApplication
-@EnableEurekaClient
-public class PerfmanServiceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(PerfmanServiceApplication.class, args);
-    }
-}
-
-```
-
-#### 4. Start the service
-
-To start the service, follow these steps:
-
-1. Make sure `perfman-discovery-service` is up and running at `http://localhost:8761`.
-
-2. Start the new service, which will automatically register with Eureka when it starts.
-
-#### 5. Verify service registration
-
-Visit `http://localhost:8761` in the browser to see all services registered with Eureka, including the new service.
-
-#### 6. Configure other services to call the new service
-
-Other services can call the newly registered service by service name to ensure that all services can discover each
-other. Here is an example:
-
-```yaml
-# application.yml configuration for other services
-spring:
-  application:
-    name: other-service
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-```
-
-Use `RestTemplate` to call the new service in the code:
-
-```java
-package com.perfman.otherservice;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-@Service
-public class OtherService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    public String callNewService() {
-        return restTemplate.getForObject("http://<service-name>/endpoint", String.class);
-    }
-}
-
-@Configuration
-class Config {
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-}
-
-```
-
-#### FAQ
-
-##### Problem 1: Service is not registered with Eureka
-
-- Make sure the Eureka client is correctly configured in the service's `application.yml` file.
-
-- Make sure the Eureka server (perfman-discovery-service) is up and running at the specified address.
-
-##### Problem 2: Service cannot discover other services
-
-- Make sure all services are correctly registered with Eureka and that the Eureka server is running properly.
-- Check that the service name is correct and that the service name is consistent with the name registered in Eureka.
-
-### Running the Services
-
-Start the Eureka Server:
-
-```bash
-cd perfman-discovery-service
-mvn spring-boot:run
-```
-
-Repeat the above step for each service, replacing `perfman-discovery-service` with the service directory you wish to
-start.
-
-## How to automatically generate database Model and Mapper
-
-This project uses MyBatis Generator (MBG) to automatically generate Model and Mapper files corresponding to database
-tables. The following are specific steps for each microservice:
-
-### Prerequisites
-
-1. Make sure Maven is installed.
-2. Make sure the MySQL database is started and the relevant table structure has been created.
-3. Make sure the configuration center (`perfman-config-service`) is running normally and the database connection
-   information has been configured.
-
-### General steps
-
-1. **Add MyBatis Generator dependency in `pom.xml`**
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>2.1.4</version>
-    </dependency>
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-core</artifactId>
-        <version>1.4.0</version>
-    </dependency>
-</dependencies>
-
-<build>
-<plugins>
-    <plugin>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <configuration>
-            <verbose>true</verbose>
-            <overwrite>true</overwrite>
-        </configuration>
-        <executions>
-            <execution>
-                <id>Generate MyBatis Artifacts</id>
-                <goals>
-                    <goal>generate</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-</plugins>
-</build>
-```
-
-2. **Create the `generatorConfig.xml` file in the `src/main/resources` directory**
-
-Take `perfman-auth-service` as an example:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    <context id="MySQLTables" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/perfman"
-                        userId="root"
-                        password="Test123456"/>
-
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
-        <javaModelGenerator targetPackage="com.code4faster.perfmanauthservice.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanauthservice.mapper"
-                             targetProject="src/main/java"/>
-
-        <table tableName="users" domainObjectName="User"/>
-        <table tableName="roles" domainObjectName="Role"/>
-        <table tableName="permissions" domainObjectName="Permission"/>
-        <table tableName="user_roles" domainObjectName="UserRole"/>
-        <table tableName="role_permissions" domainObjectName="RolePermission"/>
-        <table tableName="user_tokens" domainObjectName="UserToken"/>
-    </context>
-</generatorConfiguration>
-```
-
-Change `targetPackage` and table name according to different microservices.
-
-3. **Run MyBatis Generator in the command line**
-
-```bash
-mvn mybatis-generator:generate
-```
-
-### Configuration examples for each microservice
-
-#### perfman-auth-service
-
-Directory structure:
-
-```
-perfman-auth-service
-│
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─code4faster
-    │  │          └─perfmanauthservice
-    │  │              │  PerfmanAuthServiceApplication.java
-    │  │              │
-    │  │              ├─model
-    │  │              │      User.java
-    │  │              │      Role.java
-    │  │              │      Permission.java
-    │  │              │      UserRole.java
-    │  │              │      RolePermission.java
-    │  │              │      UserToken.java
-    │  │              │
-    │  │              ├─mapper
-    │  │              │      UserMapper.java
-    │  │              │      RoleMapper.java
-    │  │              │      PermissionMapper.java
-    │  │              │      UserRoleMapper.java
-    │  │              │      RolePermissionMapper.java
-    │  │              │      UserTokenMapper.java
-    │  │              │
-    │  │              ├─service
-    │  │              │      UserService.java
-    │  │              │      RoleService.java
-    │  │              │      PermissionService.java
-    │  │              │      UserRoleService.java
-    │  │              │      RolePermissionService.java
-    │  │              │      UserTokenService.java
-    │  │              │
-    │  │              └─controller
-    │  │                     AuthController.java
-    │  │                     # Other controllers
-    │  └─resources
-    │      │  application.yml
-    │      │  generatorConfig.xml
-    │      └─mapper
-    │              UserMapper.xml
-    │              RoleMapper.xml
-    │              PermissionMapper.xml
-    │              UserRoleMapper.xml
-    │              RolePermissionMapper.xml
-    │              UserTokenMapper.xml
-```
-
-#### perfman-project-service
-
-1. **Configure `generatorConfig.xml`**
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    <context id="MySQLTables" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/perfman"
-                        userId="root"
-                        password="Test123456"/>
-
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
-        <javaModelGenerator targetPackage="com.code4faster.perfmanprojectservice.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.code4faster.perfmanprojectservice.mapper"
-                             targetProject="src/main/java"/>
-
-        <table tableName="projects" domainObjectName="Project"/>
-        <table tableName="project_members" domainObjectName="ProjectMember"/>
-        <table tableName="project_invitations" domainObjectName="ProjectInvitation"/>
-    </context>
-</generatorConfiguration>
-```
-
-2. **Generate Model and Mapper**
-
-```bash
-mvn mybatis-generator:generate
-```
-
-Directory structure:
-
-```
-perfman-project-service
-│
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─code4faster
-    │  │          └─perfmanprojectservice
-    │  │              │  PerfmanProjectServiceApplication.java
-    │  │              │
-    │  │              ├─model
-    │  │              │      Project.java
-    │  │              │      ProjectMember.java
-    │  │              │      ProjectInvitation.java
-    │  │              │
-    │  │              ├─mapper
-    │  │              │      ProjectMapper.java
-    │  │              │      ProjectMemberMapper.java
-    │  │              │      ProjectInvitationMapper.java
-    │  │              │
-    │  │              ├─service
-    │  │              │      ProjectService.java
-    │  │              │      ProjectMemberService.java
-    │  │              │      ProjectInvitationService.java
-    │  │              │
-    │  │              └─controller
-    │  │                     ProjectController.java
-    │  │                     # Other controllers
-    │  └─resources
-    │      │  application.yml
-    │      │  generatorConfig.xml
-    │      └─mapper
-    │              ProjectMapper.xml
-    │              ProjectMemberMapper.xml
-    │              ProjectInvitationMapper.xml
-```
-
-### Other microservices
-
-Follow the above example, create `generatorConfig.xml` for other microservices, adjust
-
-`targetPackage` and table name, and then run MyBatis Generator to generate the corresponding Model and Mapper files.
-
-## Documentation
-
-For more detailed documentation, visit [Wiki Page](https://github.com/yourusername/perfman/wiki).
-
-## Contributing
-
-We welcome contributions to PerfMan! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to submit
-pull requests, the
-process for submitting bugs, and how to suggest improvements.
+The original Spring Cloud services remain for migration reference and are not needed to start the Go workspace. Their setup instructions are archived under [docs/legacy](docs/legacy/README.md). The active entry point is [`studio/cmd/perfman`](studio/cmd/perfman).
 
 ## License
 
-PerfMan is open-source software licensed under the [Apache-2.0 license](LICENSE).
-
-## Acknowledgments
-
-- Spring Cloud for the microservices architecture support.
-- Eureka for service discovery.
-- Spring Cloud Gateway for API gateway management.
-- All contributors and supporters of the PerfMan project.
+Licensed under [Apache License 2.0](LICENSE).

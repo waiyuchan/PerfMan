@@ -1,0 +1,763 @@
+{
+  "reviewedAt": "2026-11-08",
+  "scope": "Public PTS documentation and attached UI screenshots; no authenticated console access",
+  "sourceCount": 53,
+  "sources": [
+    {
+      "id": 102280,
+      "url": "https://cloud.tencent.com/document/product/248/102280",
+      "title": "环境管理",
+      "headings": [
+        "环境管理",
+        "本页目录：",
+        "简介",
+        "前提条件",
+        "创建环境",
+        "环境编辑",
+        "环境删除",
+        "使用环境变量",
+        "脚本模式",
+        "拼接环境变量与字符串示例",
+        "简单模式"
+      ]
+    },
+    {
+      "id": 103800,
+      "url": "https://cloud.tencent.com/document/product/248/103800",
+      "title": "JMeter 进行 WebSocket 压测",
+      "headings": [
+        "JMeter 进行 WebSocket 压测",
+        "本页目录：",
+        "背景",
+        "插件版本",
+        "使用方法",
+        "新建 JMeter 压测场景",
+        "上传压测文件",
+        "运行压测脚本",
+        "查看压测结果"
+      ]
+    },
+    {
+      "id": 104709,
+      "url": "https://cloud.tencent.com/document/product/248/104709",
+      "title": "使用云压测回放 GoReplay 录制的请求",
+      "headings": [
+        "使用云压测回放 GoReplay 录制的请求",
+        "本页目录：",
+        "前言",
+        "GoRePlay 简介",
+        "常见 GoReplay 使用场景",
+        "GoReplay 流量录制原理",
+        "开始录制回放用户 Nginx 网关",
+        "环境准备",
+        "实验流程",
+        "将 Nginx 上的请求录制成 Gor 文件",
+        "将 Gor 文件转换成 CSV 参数文件",
+        "在云压测上使用 CSV 参数文件回放请求"
+      ]
+    },
+    {
+      "id": 107649,
+      "url": "https://cloud.tencent.com/document/product/248/107649",
+      "title": "JMeter 请求和检查点日志打印",
+      "headings": [
+        "JMeter 请求和检查点日志打印",
+        "本页目录：",
+        "请求日志",
+        "检查点日志"
+      ]
+    },
+    {
+      "id": 108702,
+      "url": "https://cloud.tencent.com/document/product/248/108702",
+      "title": "SQL 数据库压测",
+      "headings": [
+        "SQL 数据库压测",
+        "本页目录：",
+        "基本用法",
+        "数据库连接",
+        "SQL 查询",
+        "SQL 执行",
+        "脚本示例",
+        "脚本验证"
+      ]
+    },
+    {
+      "id": 111746,
+      "url": "https://cloud.tencent.com/document/product/248/111746",
+      "title": "运行时元数据",
+      "headings": [
+        "运行时元数据",
+        "本页目录：",
+        "元数据字段说明",
+        "示例"
+      ]
+    },
+    {
+      "id": 116986,
+      "url": "https://cloud.tencent.com/document/product/248/116986",
+      "title": "Redis 压测",
+      "headings": [
+        "Redis 压测",
+        "本页目录：",
+        "基本用法",
+        "数据库连接",
+        "数据库操作",
+        "脚本验证"
+      ]
+    },
+    {
+      "id": 126071,
+      "url": "https://cloud.tencent.com/document/product/248/126071",
+      "title": "基础语法",
+      "headings": [
+        "基础语法",
+        "本页目录：",
+        "变量声明",
+        "使用前提",
+        "示例",
+        "示例1：变量声明和使用",
+        "示例2：变量作用域",
+        "条件语句",
+        "函数说明",
+        "使用前提",
+        "语法说明",
+        "示例",
+        "示例1：基本条件判断",
+        "示例2：使用 switch 语句",
+        "示例3：复杂条件判断",
+        "错误处理（try/catch）",
+        "函数说明",
+        "使用前提",
+        "语法说明",
+        "示例",
+        "示例1：捕获 JSON 解析错误",
+        "示例2：处理 HTTP 请求错误",
+        "示例3：多层错误处理",
+        "示例4：错误处理和重试机制结合",
+        "循环语句",
+        "函数说明",
+        "使用前提",
+        "语法说明",
+        "示例",
+        "示例1：for 循环遍历数组",
+        "示例2：for...of 循环",
+        "示例3：forEach 方法",
+        "示例4：while 循环实现重试",
+        "数组操作",
+        "函数说明",
+        "使用前提",
+        "常用方法",
+        "示例",
+        "示例1：数组声明和基本操作",
+        "示例2：数组遍历和处理",
+        "示例3：数组方法的使用",
+        "示例4：动态构建数组"
+      ]
+    },
+    {
+      "id": 136041,
+      "url": "https://cloud.tencent.com/document/product/248/136041",
+      "title": "文件管理",
+      "headings": [
+        "文件管理",
+        "本页目录：",
+        "简介",
+        "前提条件",
+        "上传文件",
+        "查看文件列表",
+        "关联场景",
+        "解除关联场景",
+        "下载与预览文件",
+        "删除文件"
+      ]
+    },
+    {
+      "id": 87313,
+      "url": "https://cloud.tencent.com/document/product/248/87313",
+      "title": "场景概述",
+      "headings": [
+        "场景概述",
+        "本页目录：",
+        "概念介绍",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87314,
+      "url": "https://cloud.tencent.com/document/product/248/87314",
+      "title": "施压配置",
+      "headings": [
+        "施压配置",
+        "本页目录：",
+        "压力模式",
+        "并发模式",
+        "RPS 模式",
+        "网络流量配置",
+        "公共网络",
+        "腾讯云 VPC 私有网络",
+        "压测资源"
+      ]
+    },
+    {
+      "id": 87315,
+      "url": "https://cloud.tencent.com/document/product/248/87315",
+      "title": "响应数据提取",
+      "headings": [
+        "响应数据提取",
+        "本页目录：",
+        "概述",
+        "基本用法",
+        "使用场景",
+        "提取器类型",
+        "Jsonpath 提取器",
+        "正则表达式提取器"
+      ]
+    },
+    {
+      "id": 87316,
+      "url": "https://cloud.tencent.com/document/product/248/87316",
+      "title": "简单模式压测",
+      "headings": [
+        "简单模式压测",
+        "本页目录：",
+        "前言",
+        "创建简单模式压测场景",
+        "添加 HTTP 请求",
+        "构建 HTTP 请求",
+        "基本信息",
+        "使用变量",
+        "检查点配置",
+        "检查 response status code 是否为 200：",
+        "检查响应体某个字段是否符合预期：",
+        "文件依赖",
+        "模式切换"
+      ]
+    },
+    {
+      "id": 87318,
+      "url": "https://cloud.tencent.com/document/product/248/87318",
+      "title": "脚本概述",
+      "headings": [
+        "脚本概述",
+        "本页目录：",
+        "进入脚本编辑器",
+        "脚本结构",
+        "导入依赖模块",
+        "定义全局变量",
+        "定义全局选项 Options",
+        "定义函数",
+        "定义检查点",
+        "生命周期"
+      ]
+    },
+    {
+      "id": 87324,
+      "url": "https://cloud.tencent.com/document/product/248/87324",
+      "title": "基本用法",
+      "headings": [
+        "基本用法",
+        "本页目录：",
+        "脚本编写",
+        "HTTP GET 请求",
+        "HTTP POST 请求",
+        "文件依赖"
+      ]
+    },
+    {
+      "id": 87325,
+      "url": "https://cloud.tencent.com/document/product/248/87325",
+      "title": "配置选项",
+      "headings": [
+        "配置选项",
+        "本页目录：",
+        "PTS 支持的配置选项",
+        "配置 HTTP 请求的超时时间",
+        "配置 HTTP 请求的基本认证"
+      ]
+    },
+    {
+      "id": 87326,
+      "url": "https://cloud.tencent.com/document/product/248/87326",
+      "title": "gRPC 协议压测",
+      "headings": [
+        "gRPC 协议压测",
+        "本页目录：",
+        "基本用法",
+        "协议上传",
+        "脚本编写",
+        "文件依赖"
+      ]
+    },
+    {
+      "id": 87327,
+      "url": "https://cloud.tencent.com/document/product/248/87327",
+      "title": "Protobuf 协议压测",
+      "headings": [
+        "Protobuf 协议压测",
+        "本页目录：",
+        "协议上传",
+        "示例",
+        "协议文件",
+        "duty.proto",
+        "student.proto",
+        "脚本"
+      ]
+    },
+    {
+      "id": 87328,
+      "url": "https://cloud.tencent.com/document/product/248/87328",
+      "title": "WebSocket 协议压测",
+      "headings": [
+        "WebSocket 协议压测",
+        "本页目录：",
+        "概述",
+        "脚本编写",
+        "文件依赖"
+      ]
+    },
+    {
+      "id": 87329,
+      "url": "https://cloud.tencent.com/document/product/248/87329",
+      "title": "设置检查点",
+      "headings": [
+        "设置检查点",
+        "本页目录：",
+        "概述",
+        "用法",
+        "1. 检查点定义",
+        "2. 检查结果查看",
+        "指标明细",
+        "关联请求",
+        "检查点及对应请求的日志打印"
+      ]
+    },
+    {
+      "id": 87330,
+      "url": "https://cloud.tencent.com/document/product/248/87330",
+      "title": "三方包引用",
+      "headings": [
+        "三方包引用",
+        "本页目录：",
+        "常用搜索远程模块的网站",
+        "常用远程模块",
+        "crypto",
+        "aes"
+      ]
+    },
+    {
+      "id": 87331,
+      "url": "https://cloud.tencent.com/document/product/248/87331",
+      "title": "设置全局 Options",
+      "headings": [
+        "设置全局 Options",
+        "本页目录：",
+        "HTTP 全局配置",
+        "WebSocket 全局配置",
+        "TLS 全局配置",
+        "预处理与后处理配置"
+      ]
+    },
+    {
+      "id": 87332,
+      "url": "https://cloud.tencent.com/document/product/248/87332",
+      "title": "多脚本压测",
+      "headings": [
+        "多脚本压测",
+        "本页目录：",
+        "基本用法",
+        "压力分配规则",
+        "引用公共脚本",
+        "注意事项",
+        "使用建议"
+      ]
+    },
+    {
+      "id": 87334,
+      "url": "https://cloud.tencent.com/document/product/248/87334",
+      "title": "JMeter 模式概述",
+      "headings": [
+        "JMeter 模式概述",
+        "本页目录：",
+        "基本用法",
+        "创建 JMeter 压测场景",
+        "上传 jmx 脚本等文件",
+        "运行压测脚本",
+        "使用限制"
+      ]
+    },
+    {
+      "id": 87335,
+      "url": "https://cloud.tencent.com/document/product/248/87335",
+      "title": "JMeter 配置 RPS 限制",
+      "headings": [
+        "JMeter 配置 RPS 限制",
+        "本页目录：",
+        "配置 RPS 限制"
+      ]
+    },
+    {
+      "id": 87336,
+      "url": "https://cloud.tencent.com/document/product/248/87336",
+      "title": "JMeter 使用 CSV 参数文件",
+      "headings": [
+        "JMeter 使用 CSV 参数文件",
+        "本页目录：",
+        "使用 JMeter 配置参数文件",
+        "在请求中引用 CSV Data Set Config 设置的参数",
+        "在 PTS 中使用 CSV 参数文件"
+      ]
+    },
+    {
+      "id": 87337,
+      "url": "https://cloud.tencent.com/document/product/248/87337",
+      "title": "JMeter 多线程组",
+      "headings": [
+        "JMeter 多线程组",
+        "本页目录：",
+        "JMeter 线程组并行或串行",
+        "在 JMeter 中为线程设置循环次数",
+        "使用 PTS 设置 JMeter 压力模型",
+        "PTS 配置线程组并行",
+        "PTS 配置线程组串行"
+      ]
+    },
+    {
+      "id": 87340,
+      "url": "https://cloud.tencent.com/document/product/248/87340",
+      "title": "使用参数文件",
+      "headings": [
+        "使用参数文件",
+        "本页目录：",
+        "上传参数文件",
+        "参数定义",
+        "参数使用",
+        "参数文件组合与切分",
+        "参数切分的逻辑",
+        "参数组合的逻辑",
+        "在场景中使用参数",
+        "简单模式场景",
+        "脚本模式场景"
+      ]
+    },
+    {
+      "id": 87341,
+      "url": "https://cloud.tencent.com/document/product/248/87341",
+      "title": "使用请求文件",
+      "headings": [
+        "使用请求文件",
+        "本页目录：",
+        "使用请求文件"
+      ]
+    },
+    {
+      "id": 87342,
+      "url": "https://cloud.tencent.com/document/product/248/87342",
+      "title": "使用协议文件",
+      "headings": [
+        "使用协议文件",
+        "本页目录：",
+        "gRPC 场景使用协议文件"
+      ]
+    },
+    {
+      "id": 87344,
+      "url": "https://cloud.tencent.com/document/product/248/87344",
+      "title": "域名解析",
+      "headings": [
+        "域名解析",
+        "本页目录：",
+        "操作场景",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87346,
+      "url": "https://cloud.tencent.com/document/product/248/87346",
+      "title": "压测指标导出使用指南",
+      "headings": [
+        "压测指标导出使用指南",
+        "本页目录：",
+        "压测指标导出",
+        "压测指标查看",
+        "监控面板使用",
+        "图表栏 Overview",
+        "图表栏 VUs vs Other Metrics",
+        "图表栏 Service Detail",
+        "图表栏 Check Detail",
+        "图表栏 Pressure Machine Detail",
+        "备注：",
+        "压测指标查询"
+      ]
+    },
+    {
+      "id": 87347,
+      "url": "https://cloud.tencent.com/document/product/248/87347",
+      "title": "压测指标文档",
+      "headings": [
+        "压测指标文档",
+        "本页目录：",
+        "标签",
+        "默认标签",
+        "其他标签",
+        "指标"
+      ]
+    },
+    {
+      "id": 87348,
+      "url": "https://cloud.tencent.com/document/product/248/87348",
+      "title": "SLA 配置",
+      "headings": [
+        "SLA 配置",
+        "本页目录：",
+        "配置场景",
+        "配置 SLA",
+        "SLA 规则配置",
+        "告警联系人配置",
+        "配置效果"
+      ]
+    },
+    {
+      "id": 87349,
+      "url": "https://cloud.tencent.com/document/product/248/87349",
+      "title": "复制场景",
+      "headings": [
+        "复制场景",
+        "本页目录：",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87351,
+      "url": "https://cloud.tencent.com/document/product/248/87351",
+      "title": "新建项目",
+      "headings": [
+        "新建项目",
+        "本页目录：",
+        "操作场景",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87352,
+      "url": "https://cloud.tencent.com/document/product/248/87352",
+      "title": "编辑和删除项目",
+      "headings": [
+        "编辑和删除项目",
+        "本页目录：",
+        "编辑项目",
+        "删除项目"
+      ]
+    },
+    {
+      "id": 87354,
+      "url": "https://cloud.tencent.com/document/product/248/87354",
+      "title": "调试场景",
+      "headings": [
+        "调试场景",
+        "本页目录：",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87355,
+      "url": "https://cloud.tencent.com/document/product/248/87355",
+      "title": "解读报告",
+      "headings": [
+        "解读报告",
+        "本页目录：",
+        "概述",
+        "实时报表",
+        "历史报表",
+        "报表数据",
+        "概览",
+        "服务明细",
+        "检查点明细",
+        "脚本信息",
+        "多维分析",
+        "施压机",
+        "请求采样"
+      ]
+    },
+    {
+      "id": 87357,
+      "url": "https://cloud.tencent.com/document/product/248/87357",
+      "title": "概述",
+      "headings": [
+        "概述",
+        "本页目录：",
+        "简介",
+        "授权方式"
+      ]
+    },
+    {
+      "id": 87358,
+      "url": "https://cloud.tencent.com/document/product/248/87358",
+      "title": "策略授予",
+      "headings": [
+        "策略授予",
+        "本页目录：",
+        "操作前提",
+        "自定义策略",
+        "策略授权",
+        "支持资源级授权的 API 列表",
+        "不支持资源级授权的 API 列表"
+      ]
+    },
+    {
+      "id": 87359,
+      "url": "https://cloud.tencent.com/document/product/248/87359",
+      "title": "策略语法",
+      "headings": [
+        "策略语法",
+        "本页目录：",
+        "概述",
+        "策略语法",
+        "CAM 策略",
+        "元素用法",
+        "指定效力",
+        "指定操作",
+        "指定资源",
+        "实际案例",
+        "支持资源级授权的 API 列表"
+      ]
+    },
+    {
+      "id": 87361,
+      "url": "https://cloud.tencent.com/document/product/248/87361",
+      "title": "标签概述",
+      "headings": [
+        "标签概述",
+        "本页目录：",
+        "简介",
+        "案例背景",
+        "设置标签"
+      ]
+    },
+    {
+      "id": 87363,
+      "url": "https://cloud.tencent.com/document/product/248/87363",
+      "title": "绑定标签",
+      "headings": [
+        "绑定标签",
+        "本页目录：",
+        "操作前提",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87364,
+      "url": "https://cloud.tencent.com/document/product/248/87364",
+      "title": "使用标签",
+      "headings": [
+        "使用标签",
+        "本页目录：",
+        "前提条件",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 87366,
+      "url": "https://cloud.tencent.com/document/product/248/87366",
+      "title": "浏览器流量录制",
+      "headings": [
+        "浏览器流量录制",
+        "本页目录：",
+        "操作步骤",
+        "安装插件",
+        "使用插件"
+      ]
+    },
+    {
+      "id": 87367,
+      "url": "https://cloud.tencent.com/document/product/248/87367",
+      "title": "定时压测",
+      "headings": [
+        "定时压测",
+        "本页目录：",
+        "操作场景",
+        "使用前提",
+        "使用限制",
+        "操作指南",
+        "执行频率介绍",
+        "cron 表达式"
+      ]
+    },
+    {
+      "id": 87368,
+      "url": "https://cloud.tencent.com/document/product/248/87368",
+      "title": "错误代码手册",
+      "headings": [
+        "错误代码手册",
+        "本页目录：",
+        "前言",
+        "引擎自定义错误码",
+        "HTTP 协议常见错误码",
+        "gRPC 协议常见错误码"
+      ]
+    },
+    {
+      "id": 93015,
+      "url": "https://cloud.tencent.com/document/product/248/93015",
+      "title": "Socket.IO 框架压测",
+      "headings": [
+        "Socket.IO 框架压测",
+        "本页目录：",
+        "基本概念",
+        "Socket.IO",
+        "WebSocket",
+        "HTTP 长轮询",
+        "Socket.IO 压测介绍",
+        "脚本编写",
+        "脚本验证",
+        "文件依赖"
+      ]
+    },
+    {
+      "id": 93016,
+      "url": "https://cloud.tencent.com/document/product/248/93016",
+      "title": "TCP/UDP 协议压测",
+      "headings": [
+        "TCP/UDP 协议压测",
+        "本页目录：",
+        "Socket 基本概念",
+        "脚本编写",
+        "脚本验证",
+        "文件依赖"
+      ]
+    },
+    {
+      "id": 93116,
+      "url": "https://cloud.tencent.com/document/product/248/93116",
+      "title": "下载报告",
+      "headings": [
+        "下载报告",
+        "本页目录：",
+        "操作步骤"
+      ]
+    },
+    {
+      "id": 93118,
+      "url": "https://cloud.tencent.com/document/product/248/93118",
+      "title": "告警联系人",
+      "headings": [
+        "告警联系人",
+        "本页目录：",
+        "使用场景",
+        "添加联系人组",
+        "查看与管理联系人组"
+      ]
+    },
+    {
+      "id": 93119,
+      "url": "https://cloud.tencent.com/document/product/248/93119",
+      "title": "告警历史",
+      "headings": [
+        "告警历史",
+        "本页目录：",
+        "操作场景",
+        "操作步骤"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "canvas": {
+    "width": 1450,
+    "height": 820
+  },
+  "requiredLabels": [
+    "Web console",
+    "Control modules",
+    "HTTP runner",
+    "Demo target",
+    "Atomic JSON state",
+    "Reports / k6 export"
+  ],
+  "styleRules": [
+    {
+      "label": "Web console",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Control modules",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "HTTP runner",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Demo target",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Atomic JSON state",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    },
+    {
+      "label": "Reports / k6 export",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid"
+    }
+  ],
+  "requiredRelations": [
+    {
+      "from": "Web console",
+      "to": "Control modules"
+    },
+    {
+      "from": "Control modules",
+      "to": "HTTP runner"
+    },
+    {
+      "from": "HTTP runner",
+      "to": "Demo target"
+    },
+    {
+      "from": "Control modules",
+      "to": "Atomic JSON state"
+    },
+    {
+      "from": "Control modules",
+      "to": "Reports / k6 export"
+    }
+  ],
+  "overlapSets": [
+    [
+      "Web console",
+      "Control modules",
+      "HTTP runner",
+      "Demo target",
+      "Atomic JSON state",
+      "Reports / k6 export"
+    ]
+  ],
+  "requireBoundArrows": true
+}
