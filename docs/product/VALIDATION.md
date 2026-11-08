@@ -47,3 +47,5 @@ Documentation checks validate active local links with filename case, PNG assets 
 Removed the fourteen retired Spring service directories, root Maven build, old SQL schemas, branding assets and Java setup guides. The current Go workspace remains independently runnable. Process settings are documented in the root `.env.example`; a separate configuration repository is not needed. Historical source is recoverable from Git history.
 
 GitHub language statistics exclude documentation tools, generated visual material and the unused HTTP prototype UI. Actual Go and console sources remain classified under their real languages. Java source and Maven manifests are absent from the current repository tree. Documentation links and Git ignore rules were rechecked after cleanup.
+
+After cleanup, upgraded `golang.org/x/crypto` from v0.31.0 to v0.58.0 and the selected `golang.org/x/sys` dependency to v0.49.0, addressing the package versions reported by Dependabot. The full Go race-test suite and `go vet` passed with the upgraded dependencies.
