@@ -4,7 +4,11 @@ PerfMan is an open-source performance testing workspace with a Go backend and a 
 
 English · [简体中文](README.zh.md)
 
+[![Go 1.26+](https://img.shields.io/badge/Go-1.26%2B-00ADD8?logo=go&logoColor=white)](studio/go.mod) [![SQLite](https://img.shields.io/badge/Storage-SQLite-4169E1?logo=sqlite&logoColor=white)](#configuration-and-storage) [![English and Chinese](https://img.shields.io/badge/UI-English%20%2F%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-238675)](#product-showcase) [![Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-55616d)](LICENSE)
+
 [Quick start](#quick-start) · [Capabilities](#what-you-can-try) · [Workflow](#business-workflow) · [Architecture](#architecture) · [Screenshots](#product-showcase) · [Documentation](docs/README.md)
+
+[![PerfMan performance overview](docs/showcase/screens/overview.png)](docs/showcase/README.md)
 
 ## Quick start
 
@@ -115,7 +119,7 @@ See the [implementation matrix](docs/product/IMPLEMENTATION.md) for exact behavi
 
 Back up SQLite using its backup API, or stop the service before copying the entire data directory. Keep `workspace.key` with the database: losing it prevents decryption of environment secrets. Copying only a live `.db` file can omit WAL changes. Runtime databases and keys are excluded from Git.
 
-The [companion configuration repository](https://github.com/waiyuchan/perfman-config-repo) retains the former Spring configuration. The Go process uses environment variables; projects, environments, assets and policies are versioned workspace entities. The companion checkout includes a Go environment example and migration notes.
+This repository is self-contained; a separate configuration repository, Spring Config and Eureka are not required. The [environment template](.env.example) lists optional process settings. Export those values before starting the Go process; the binary does not automatically load `.env`. Docker Compose reads a root `.env` for its initial-password substitution. Projects, environments, assets and policies are managed in the console and persisted in SQLite.
 
 ## Docker
 
@@ -141,7 +145,22 @@ The current suite contains 23 top-level Go tests, including protocol scenario su
 
 Diagram generators, editable sources, contracts and screenshot layouts are included. [Documentation maintenance](scripts/docs/README.md) explains regeneration and asset validation.
 
-## Documentation and project history
+## Repository layout
+
+```text
+studio/
+  cmd/perfman/       Go server entry point
+  console/           Bilingual application interface
+  workspace*.go      API, persistence, engines and scheduling
+  go.mod             Go dependencies
+docs/                Architecture, product design and screenshots
+scripts/             Diagram and documentation tools
+.env.example         Optional process configuration
+Dockerfile           Go application image
+compose.yaml         Single-service deployment with persistent storage
+```
+
+## Documentation
 
 | Document | Purpose |
 | --- | --- |
@@ -152,7 +171,7 @@ Diagram generators, editable sources, contracts and screenshot layouts are inclu
 | [Screenshot gallery](docs/showcase/README.md) | Individual screens, boards and capture provenance |
 | [PTS feature review](docs/research/PTS_REVIEW_2026-11-08.zh.md) | Reference research across 53 official documentation pages |
 
-The original Spring Cloud services remain for migration reference and are not needed to start the Go workspace. Their setup instructions are archived under [docs/legacy](docs/legacy/README.md). The active entry point is [`studio/cmd/perfman`](studio/cmd/perfman).
+The active entry point is [`studio/cmd/perfman`](studio/cmd/perfman). The retired Java implementation, Maven builds and database scripts have been removed from the current branch. Previous versions remain available in [Git history](https://github.com/waiyuchan/PerfMan/tree/2455d16caab25ddc50d50a17505864d43d10525d).
 
 ## License
 

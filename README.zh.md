@@ -4,7 +4,11 @@ PerfMan 是一个开源性能测试工作空间，采用 Go 后端和中英文�
 
 [English](README.md) · 简体中文
 
+[![Go 1.26+](https://img.shields.io/badge/Go-1.26%2B-00ADD8?logo=go&logoColor=white)](studio/go.mod) [![SQLite](https://img.shields.io/badge/Storage-SQLite-4169E1?logo=sqlite&logoColor=white)](#配置与存储) [![English and Chinese](https://img.shields.io/badge/UI-English%20%2F%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-238675)](#功能截图) [![Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-55616d)](LICENSE)
+
 [快速启动](#快速启动) · [功能](#可以体验什么) · [业务流程](#业务流程) · [架构](#系统架构) · [截图](#功能截图) · [文档](docs/README.md)
+
+[![PerfMan 性能概览](docs/showcase/screens/overview.png)](docs/showcase/README.md)
 
 ## 快速启动
 
@@ -115,7 +119,7 @@ go run ./cmd/perfman
 
 运行中使用 SQLite 备份 API；复制整个数据目录前先停止服务。备份需保留 `workspace.key`，丢失后无法解密环境密钥。仅复制运行中的 `.db` 可能遗漏 WAL 中的修改。运行数据库和密钥已排除在 Git 之外。
 
-[配套配置仓库](https://github.com/waiyuchan/perfman-config-repo) 保留原 Spring 配置；Go 使用环境变量管理进程配置，使用版本化工作空间实体管理项目、环境、文件和策略。配套检出目录补有 Go 环境示例及迁移说明。
+当前仓库可独立运行，不需要单独的配置仓库、Spring Config 或 Eureka。[环境变量模板](.env.example) 列出可选进程设置；使用前需导出变量，Go 程序不会自动加载 `.env`。Docker Compose 会读取根目录 `.env` 中的初始化密码。项目、环境、文件和策略通过控制台管理，保存到 SQLite。
 
 ## Docker
 
@@ -141,7 +145,22 @@ node scripts/docs/check-docs.mjs
 
 图形生成器、可编辑源文件、校验契约及截图版式一并提供，见[文档维护说明](scripts/docs/README.md)。
 
-## 文档与工程沿革
+## 仓库结构
+
+```text
+studio/
+  cmd/perfman/       Go 服务入口
+  console/           中英文应用界面
+  workspace*.go      API、存储、引擎与调度
+  go.mod             Go 依赖
+docs/                架构、功能设计与截图
+scripts/             图形和文档工具
+.env.example         可选进程配置
+Dockerfile           Go 应用镜像
+compose.yaml         带持久化存储的单服务部署
+```
+
+## 文档
 
 | 文档 | 内容 |
 | --- | --- |
@@ -152,7 +171,7 @@ node scripts/docs/check-docs.mjs
 | [截图集](docs/showcase/README.md) | 单页截图、展示板和采集信息 |
 | [PTS 功能研究](docs/research/PTS_REVIEW_2026-11-08.zh.md) | 53 篇官方文档的参考设计梳理 |
 
-原 Spring Cloud 服务作为迁移参考保留，无需参与 Go 工作空间启动。原操作说明位于 [docs/legacy](docs/legacy/README.zh.md)，当前入口为 [`studio/cmd/perfman`](studio/cmd/perfman)。
+当前入口为 [`studio/cmd/perfman`](studio/cmd/perfman)。原 Java 实现、Maven 构建和旧数据库脚本已从当前分支删除，旧版本可以从 [Git 历史](https://github.com/waiyuchan/PerfMan/tree/2455d16caab25ddc50d50a17505864d43d10525d)查看。
 
 ## 许可证
 

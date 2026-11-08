@@ -11,7 +11,7 @@ node scripts/docs/check-docs.mjs
 git diff --check
 ```
 
-The checker verifies active Markdown links, repository-relative paths with exact filename case, screenshot manifest entries, PNG dimensions and the three editable diagram contracts. It does not check remote URL availability or re-run application tests. Research and legacy documents are historical and are not part of this active-link check.
+The checker verifies active Markdown links, repository-relative paths with exact filename case, screenshot manifest entries, PNG dimensions and the three editable diagram contracts. It does not check remote URL availability or re-run application tests. Research documents are historical and are not part of this active-link check.
 
 Generated SQLite databases, WAL files and `workspace.key` belong under ignored `studio/data/`; include source, tests, documentation and generated visual assets in a submission. The root `.dockerignore` also excludes runtime data from the image build context.
 
@@ -60,4 +60,10 @@ Wait for images and fonts to load before capturing. The layout is standalone HTM
 - Four PNG boards, source screenshots, manifest, HTML layout and generators.
 - API, implementation boundaries and the validation record.
 
-The companion `perfman-config-repo` is a separate Git repository. Its `GO-MIGRATION.md` and `perfman-go.env.example` must be submitted there, independently of this repository.
+No companion configuration repository is required. Process settings are documented in the root `.env.example`; workspace configuration lives in SQLite. The retired Spring configuration repository can remain untouched as a historical record.
+
+## GitHub presentation
+
+The root `.gitattributes` excludes documentation, diagram tools and the superseded HTTP prototype UI from language statistics. Actual Go sources and the bilingual console remain counted under their real languages. Generated diagram files are marked generated to keep code review focused on their generators. No JavaScript is reclassified as Go.
+
+The classification rules follow [GitHub Linguist attribute overrides](https://github.com/github-linguist/linguist/blob/main/docs/overrides.md). GitHub recalculates the language breakdown after processing the default-branch commit.

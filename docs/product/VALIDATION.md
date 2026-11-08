@@ -40,3 +40,10 @@ Dockerfile and Compose were added, but container startup was not verified becaus
 The submission README is available in English and Chinese. It embeds the implemented runtime, functional map and business-flow diagrams, with editable Excalidraw sources, SVG/PNG previews and evidence/validation contracts. Four workflow boards group actual application captures; raw screens, mobile/Chinese variants, a capture manifest and editable HTML layout are included.
 
 Documentation checks validate active local links with filename case, PNG assets and all three diagram contracts. The visual package does not change application behavior or claim new external integrations.
+
+
+## Go-only repository cleanup
+
+Removed the fourteen retired Spring service directories, root Maven build, old SQL schemas, branding assets and Java setup guides. The current Go workspace remains independently runnable. Process settings are documented in the root `.env.example`; a separate configuration repository is not needed. Historical source is recoverable from Git history.
+
+GitHub language statistics exclude documentation tools, generated visual material and the unused HTTP prototype UI. Actual Go and console sources remain classified under their real languages. Java source and Maven manifests are absent from the current repository tree. Documentation links and Git ignore rules were rechecked after cleanup.

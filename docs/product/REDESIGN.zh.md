@@ -1,3 +1,5 @@
+> 历史盘点说明：下文旧 Java 路径对应迁移前的 Git 历史，相关工程已从当前分支删除。当前 Go 运行时不依赖配置仓库，实际说明以 [实现矩阵](IMPLEMENTATION.md) 为准。
+
 > 历史文档：当前运行版本已由 Go Workspace 替代，请查看 [实现矩阵](IMPLEMENTATION.md) 与 [启动说明](../../README.zh.md)。
 
 # PerfMan 早期重设计记录：单机 HTTP 原型

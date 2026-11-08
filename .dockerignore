@@ -1,8 +1,9 @@
 .git
+.env
+.env.*
 studio/data
 studio/perfman
-**/target
-node_modules
+**/*.test
+**/node_modules
 docs
-resources
-perfman-*
+scripts

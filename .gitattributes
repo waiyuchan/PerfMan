@@ -1,0 +1,26 @@
+# Normalize source files consistently across platforms.
+* text=auto
+*.go text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+
+# Documentation and its build tools are not application language statistics.
+docs/** linguist-documentation=true
+scripts/architecture/** linguist-documentation=true
+scripts/docs/** linguist-documentation=true
+
+# Generated diagram previews and models remain reproducible from generators.
+docs/architecture/** linguist-generated=true
+docs/design/*.svg linguist-generated=true
+docs/design/*.png linguist-generated=true
+docs/design/*.excalidraw linguist-generated=true
+docs/design/*-model.json linguist-generated=true
+docs/design/*-contract.json linguist-generated=true
+docs/showcase/gallery.html linguist-generated=true
+
+# The superseded HTTP prototype UI is a historical reference, not the console.
+# Actual production UI in studio/console stays included as JavaScript/CSS/HTML.
+studio/web/** linguist-detectable=false

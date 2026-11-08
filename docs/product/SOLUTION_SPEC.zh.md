@@ -278,9 +278,9 @@ SLA 的指标、作用域、聚合、比较符、阈值、窗口、连续次数�
 
 ## 10. 配置仓库和旧 SSM 的迁移
 
-保留旧 Java 工程作为参考，新增 Go 服务接管全部业务 API。不要把 Eureka/Config/Auth/Logging/Notification 等旧服务一比一翻译成相同数量的 Go 微服务。
+Go 服务接管业务 API，旧 Java 工程、Maven 与旧数据库脚本已从当前分支移除，需要时从 Git 历史查阅。无需将 Eureka/Config/Auth/Logging/Notification 等旧服务一比一翻译成同样数量的 Go 微服务。
 
-`perfman-config-repo` 的数据库/Redis/SMTP/JWT 配置是旧部署上下文。映射为 Go 的 typed startup config、SecretStore、notification integration；项目环境、场景、运行快照均进入业务数据库。真实密钥不复制到仓库或前端。
+`perfman-config-repo` 只属于历史部署上下文，当前版本不读取或依赖该仓库。进程配置由本仓库 `.env.example` 说明，运行时使用环境变量；项目环境、场景、运行快照均进入业务数据库。真实密钥不复制到仓库或前端。
 
 迁移清单：导出现有用户/项目/场景元数据→字段映射/校验→导入新库→补齐版本与来源→重新验证认证与权限。旧 JWT/Redis token 不自动可信迁移。旧 SQL 的任务/报告实体补齐状态、快照、分片、质量和文件引用。
 

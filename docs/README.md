@@ -35,6 +35,9 @@ The runtime diagram is the source for deployment claims. It shows one Go control
 | [Expanded solution specification](product/SOLUTION_SPEC.zh.md) | Requirements and target design, not a completion checklist |
 | [Future target architecture](architecture/solution-target.svg) | Proposal for separate agents, external providers and storage |
 | [Earlier UI wireframes](design/solution-wireframes.svg) | Design exploration; use actual screenshots for current UI |
-| [Original Java instructions](legacy/README.md) · [中文](legacy/README.zh.md) | Archived Spring Cloud setup for migration reference |
 
 The older `DEMO`, `REDESIGN`, `studio-runtime` and `distributed-target` artifacts describe the earlier HTTP-only scope. They remain as historical records. No standalone hosted showcase is deployed; screenshots come from the local Go application.
+
+## Configuration ownership
+
+PerfMan runs independently of the retired Spring configuration repository. Process settings are documented in the root [`.env.example`](../.env.example); workspace settings are managed through the console and SQLite. Java services, Maven files, old database scripts and Java setup guides have been removed. Their previous versions are available in [Git history](https://github.com/waiyuchan/PerfMan/tree/2455d16caab25ddc50d50a17505864d43d10525d).
